@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Shopify Expert | Muhammad Aashir Abbas</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="njnjnjnj.jpeg">
+
+  <!-- GOOGLE FONTS -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #081120;
+      --deep: #0F172A;
+      --graphite: #132238;
+      --slate: #1E293B;
+
+      --amber: #F59E0B;
+      --orange: #FB923C;
+      --gold: #FDBA74;
+
+      --cyan: #22D3EE;
+      --sky: #38BDF8;
+
+      --white: #F8FAFC;
+      --silver: #CBD5E1;
+      --muted: #94A3B8;
+
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* BACKGROUND EFFECT */
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right,
+          rgba(245, 158, 11, .10),
+          transparent 30%),
+
+        radial-gradient(circle at bottom left,
+          rgba(34, 211, 238, .08),
+          transparent 35%);
+      z-index: -1;
+    }
+
+    /* NAVBAR */
+
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1.2rem 3rem;
+
+  background: rgba(8,17,32,0.8);
+
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(34,211,238,0.1);
+}
+
+    .logo{
+  font-family:var(--font-display);
+  font-size:1.4rem;
+  font-weight:900;
+
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--cyan)
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+.back-btn{
+  padding:.8rem 1.5rem;
+
+  border-radius:8px;
+
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--orange)
+  );
+
+  color:var(--navy);
+
+  font-weight:700;
+  font-size:.9rem;
+
+  transition:all .3s ease;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.back-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(245,158,11,.25);
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+
+  padding:8rem 3rem 4rem;
+
+  display:flex;
+  align-items:center;
+
+  overflow:hidden;
+}
+
+.hero-grid{
+  max-width:1300px;
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:5rem;
+
+  align-items:center;
+
+  width:100%;
+}
+
+.hero-badge{
+  display:inline-block;
+
+  padding:.5rem 1rem;
+
+  border-radius:100px;
+
+  background:rgba(34,211,238,.08);
+
+  border:1px solid rgba(34,211,238,.2);
+
+  color:var(--cyan);
+
+  font-size:.8rem;
+
+  font-family:var(--font-mono);
+
+  margin-bottom:2rem;
+}
+
+.hero-title{
+  font-family:var(--font-display);
+
+  font-size:clamp(3rem,7vw,6rem);
+
+  line-height:1.05;
+
+  margin-bottom:1rem;
+}
+
+.hero-title span{
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--orange)
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+.hero-desc{
+  color:var(--silver);
+
+  font-size:1.05rem;
+
+  line-height:1.9;
+
+  max-width:700px;
+
+  margin-bottom:2rem;
+}
+
+.hero-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.8rem;
+}
+
+.tag{
+  padding:.5rem .9rem;
+
+  border-radius:5px;
+
+  background:rgba(245,158,11,.08);
+
+  border:1px solid rgba(245,158,11,.15);
+
+  color:var(--gold);
+
+  font-size:.8rem;
+
+  font-family:var(--font-mono);
+}
+
+/* RIGHT IMAGE */
+
+.portrait{
+  position:relative;
+}
+
+.portrait::before{
+  content:'';
+
+  position:absolute;
+  inset:0;
+
+  background:radial-gradient(
+    circle,
+    rgba(245,158,11,.2),
+    transparent 70%
+  );
+
+  filter:blur(40px);
+
+  z-index:-1;
+}
+
+.portrait img{
+  width:100%;
+
+  border-radius:25px;
+
+  border:1px solid rgba(245,158,11,.25);
+
+  object-fit:cover;
+
+  display:block;
+}
+
+/* SECTION */
+
+section{
+  padding:6rem 3rem;
+}
+
+.container{
+  max-width:1250px;
+  margin:auto;
+}
+
+.section-title{
+  font-family:var(--font-display);
+
+  font-size:3rem;
+
+  margin-bottom:1rem;
+
+  line-height:1.1;
+}
+
+.section-title span{
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--orange)
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+    .section-desc {
+      color: var(--silver);
+
+      line-height: 1.9;
+
+      margin-bottom: 4rem;
+
+      max-width: 850px;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit,
+          minmax(250px, 1fr));
+
+      gap: 1.5rem;
+    }
+
+    .service-box {
+      padding: 2rem;
+
+      border-radius: 18px;
+
+      background:
+        rgba(19, 34, 56, .6);
+
+      border:
+        1px solid rgba(255, 255, 255, .06);
+
+      transition: .4s;
+    }
+
+    .service-box:hover {
+      transform: translateY(-6px);
+
+      border-color:
+        rgba(245, 158, 11, .3);
+    }
+
+    .service-box h3 {
+      margin-bottom: 1rem;
+
+      color: var(--amber);
+
+      font-size: 1.2rem;
+    }
+
+    .service-box p {
+      color: var(--silver);
+
+      line-height: 1.8;
+
+      font-size: .95rem;
+    }
+
+    /* LANDSCAPE IMAGE GRID */
+
+    .gallery-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      height: 260px;
+
+      overflow: hidden;
+
+      border-radius: 20px;
+
+      position: relative;
+
+      border:
+        1px solid rgba(255, 255, 255, .08);
+
+      background: var(--graphite);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: .5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    /* PROCESS */
+
+    .process-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit,
+          minmax(250px, 1fr));
+
+      gap: 1.5rem;
+    }
+
+    .process-box {
+      padding: 2rem;
+
+      border-radius: 20px;
+
+      background:
+        rgba(19, 34, 56, .6);
+
+      border:
+        1px solid rgba(34, 211, 238, .1);
+    }
+
+    .process-number {
+      font-size: 2rem;
+
+      font-family: var(--font-mono);
+
+      color: var(--amber);
+
+      margin-bottom: 1rem;
+    }
+
+    .process-box h3 {
+      margin-bottom: 1rem;
+    }
+
+    .process-box p {
+      color: var(--silver);
+
+      line-height: 1.8;
+    }
+    /* ================= DIGITAL MARKETING PRICING ================= */
+
+.pricing-section{
+  padding:7rem 7%;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+  margin-top:4rem;
+}
+
+.pricing-card{
+  position:relative;
+
+  background:rgba(19,34,56,.65);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:24px;
+
+  padding:2.5rem 2rem;
+
+  transition:.4s;
+
+  overflow:hidden;
+}
+
+.pricing-card:hover{
+  transform:translateY(-10px);
+
+  border-color:rgba(245,158,11,.35);
+
+  box-shadow:0 25px 60px rgba(245,158,11,.12);
+}
+
+.featured-plan{
+  border:1px solid rgba(245,158,11,.45);
+
+  transform:scale(1.03);
+}
+
+.popular-tag{
+  position:absolute;
+  top:18px;
+  right:-45px;
+
+  background:linear-gradient(135deg,var(--amber),var(--orange));
+
+  color:var(--navy);
+
+  padding:.5rem 3rem;
+
+  font-size:.7rem;
+  font-weight:800;
+
+  transform:rotate(45deg);
+}
+
+.plan-name{
+  font-size:2rem;
+  font-family:var(--font-display);
+  margin-bottom:1rem;
+}
+
+.plan-price{
+  font-size:3rem;
+  font-weight:900;
+
+  color:var(--amber);
+
+  margin-bottom:.5rem;
+}
+
+.plan-desc{
+  color:var(--silver);
+  margin-bottom:2rem;
+}
+
+.plan-features{
+  list-style:none;
+  margin-bottom:2rem;
+}
+
+.plan-features li{
+  margin-bottom:1rem;
+  color:var(--white);
+
+  border-bottom:1px solid rgba(255,255,255,.06);
+
+  padding-bottom:.8rem;
+}
+
+.plan-btn{
+  display:block;
+
+  text-align:center;
+
+  padding:1rem;
+
+  border-radius:12px;
+
+  background:linear-gradient(135deg,var(--amber),var(--orange));
+
+  color:var(--navy);
+
+  font-weight:800;
+
+  transition:.3s;
+}
+
+.plan-btn:hover{
+  transform:translateY(-3px);
+}
+
+    /* CTA */
+
+    .cta-box {
+      text-align: center;
+
+      padding: 4rem 2rem;
+
+      border-radius: 30px;
+
+      background:
+        linear-gradient(135deg,
+          rgba(245, 158, 11, .08),
+          rgba(34, 211, 238, .06));
+
+      border:
+        1px solid rgba(255, 255, 255, .08);
+    }
+
+    .cta-box h2 {
+      font-family: var(--font-display);
+
+      font-size: 3rem;
+
+      margin-bottom: 1rem;
+    }
+
+    .cta-box p {
+      color: var(--silver);
+
+      max-width: 700px;
+
+      margin:
+        auto auto 2rem;
+
+      line-height: 1.9;
+    }
+
+    .cta-btn {
+      display: inline-block;
+
+      padding: 1rem 2rem;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(135deg,
+          var(--amber),
+          var(--orange));
+
+      color: var(--navy);
+
+      font-weight: 700;
+
+      transition: .3s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-4px);
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 3rem;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      border-top:
+        1px solid rgba(255, 255, 255, .06);
+    }
+
+    footer span {
+      color: var(--amber);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:950px) {
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      section,
+      .hero {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">
+      MAA
+    </div>
+
+    <a href="index.html" class="back-btn">
+      ← Back
+    </a>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-grid">
+
+      <!-- LEFT -->
+
+      <div>
+
+        <div class="hero-badge">
+          Shopify Expert
+        </div>
+
+        <h1 class="hero-title">
+          Premium <span>Shopify</span><br>
+          Experiences
+        </h1>
+
+        <p class="hero-desc">
+
+          I create high-converting Shopify stores designed for modern brands,
+          combining premium UI/UX, strategic structure, mobile optimization,
+          and conversion-focused experiences that turn visitors into loyal customers.
+
+        </p>
+
+        <div class="hero-tags">
+
+          <div class="tag">Shopify Development</div>
+
+          <div class="tag">Custom Themes</div>
+
+          <div class="tag">Mobile Optimization</div>
+
+          <div class="tag">High Conversion</div>
+
+          <div class="tag">UI/UX Design</div>
+
+          <div class="tag">Store Branding</div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="portrait">
+
+        <!-- APNI IMAGE YAHAN LAGANA -->
+
+        <img src="Gemini_Generated_Image_4c92z24c92z24c92.png" alt="Shopify Expert">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERVICES -->
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">
+        What I <span>Provide</span>
+      </h2>
+
+      <p class="section-desc">
+
+        From complete Shopify store creation to premium redesigns,
+        I help businesses build scalable e-commerce ecosystems that
+        look premium and perform even better.
+
+      </p>
+
+      <div class="services-grid">
+
+        <div class="service-box">
+          <h3>Custom Shopify Stores</h3>
+
+          <p>
+            Premium Shopify storefronts designed specifically
+            for your brand identity and business goals.
+          </p>
+        </div>
+
+        <div class="service-box">
+          <h3>Conversion Optimization</h3>
+
+          <p>
+            Optimized layouts, product pages, and user flows
+            designed to maximize sales and customer retention.
+          </p>
+        </div>
+
+        <div class="service-box">
+          <h3>Mobile Responsive Design</h3>
+
+          <p>
+            Perfect mobile experiences ensuring smooth browsing
+            and shopping across all devices.
+          </p>
+        </div>
+
+        <div class="service-box">
+          <h3>Speed Optimization</h3>
+
+          <p>
+            Lightning-fast Shopify stores with optimized assets,
+            improved loading times, and better SEO performance.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GALLERY -->
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Featured <span>Projects</span>
+      </h2>
+
+      <p class="section-desc">
+        Add your Shopify store screenshots below.
+      </p>
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item">
+
+          <!-- IMAGE 1 -->
+
+          <img src="Gemini_Generated_Image_ewwfthewwfthewwf.png" alt="Shopify Project" onclick="openImage(this.src)">
+
+        </div>
+
+        <div class="gallery-item">
+
+          <!-- IMAGE 2 -->
+
+          <img src="Gemini_Generated_Image_9vt7qg9vt7qg9vt7.png" alt="Shopify Project" onclick="openImage(this.src)">
+
+        </div>
+
+        <div class="gallery-item">
+
+          <!-- IMAGE 3 -->
+
+          <img src="Gemini_Generated_Image_werws8werws8werw.png" alt="Shopify Project" onclick="openImage(this.src)">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROCESS -->
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">
+        My Shopify <span>Process</span>
+      </h2>
+
+      <p class="section-desc">
+
+        Every successful Shopify project follows a strategic,
+        creative, and performance-focused process.
+
+      </p>
+
+      <div class="process-grid">
+
+        <div class="process-box">
+
+          <div class="process-number">01</div>
+
+          <h3>Research & Strategy</h3>
+
+          <p>
+            Understanding your brand, audience,
+            competitors, and conversion goals.
+          </p>
+
+        </div>
+
+        <div class="process-box">
+
+          <div class="process-number">02</div>
+
+          <h3>UI/UX Design</h3>
+
+          <p>
+            Designing premium user experiences
+            focused on engagement and trust.
+          </p>
+
+        </div>
+
+        <div class="process-box">
+
+          <div class="process-number">03</div>
+
+          <h3>Development</h3>
+
+          <p>
+            Building responsive, modern,
+            and optimized Shopify stores.
+          </p>
+
+        </div>
+
+        <div class="process-box">
+
+          <div class="process-number">04</div>
+
+          <h3>Launch & Growth</h3>
+
+          <p>
+            Final optimization, testing,
+            and scaling for long-term success.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!-- SHOPIFY PRICING PLANS -->
+
+<section class="pricing-section">
+
+  <div class="section-title">
+
+    <div class="small">
+      SHOPIFY SERVICES
+    </div>
+
+    <h2>
+      Shopify Store <span>Packages</span>
+    </h2>
+
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- BASIC -->
+
+    <div class="pricing-card">
+
+      <div class="plan-name">
+        Basic
+      </div>
+
+      <div class="plan-price">
+        Rs. 15,000
+      </div>
+
+      <ul>
+
+        <li>1 Shopify Store Setup</li>
+        <li>Premium Theme Setup</li>
+        <li>5 Product Uploads</li>
+        <li>Mobile Responsive Design</li>
+        <li>Payment Gateway Setup</li>
+        <li>Basic Speed Optimization</li>
+
+      </ul>
+
+      <a href="https://wa.me/923296625497?text=Assalam%20o%20Alaikum%20Aashir%20Bhai%2C%20I%20want%20the%20Basic%20Shopify%20Package%20for%20Rs.%2015000"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="plan-btn">
+
+         Order On WhatsApp
+
+      </a>
+
+    </div>
+
+
+
+
+
+    <!-- ADVANCE -->
+
+    <div class="pricing-card featured-plan">
+
+      <div class="popular-tag">
+        MOST POPULAR
+      </div>
+
+      <div class="plan-name">
+        Advance
+      </div>
+
+      <div class="plan-price">
+        Rs. 35,000
+      </div>
+
+      <ul>
+
+        <li>Custom Shopify Store Design</li>
+        <li>Premium Theme Customization</li>
+        <li>20 Product Uploads</li>
+        <li>Apps Integration</li>
+        <li>Collection Setup</li>
+        <li>SEO Optimization</li>
+        <li>Speed Optimization</li>
+        <li>Social Media Integration</li>
+
+      </ul>
+
+      <a href="https://wa.me/923296625497?text=Assalam%20o%20Alaikum%20Aashir%20Bhai%2C%20I%20want%20the%20Advance%20Shopify%20Package%20for%20Rs.%2035000"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="plan-btn">
+
+         Order On WhatsApp
+
+      </a>
+
+    </div>
+
+
+
+
+
+    <!-- PROFESSIONAL -->
+
+    <div class="pricing-card">
+
+      <div class="plan-name">
+        Professional
+      </div>
+
+      <div class="plan-price">
+        Rs. 75,000
+      </div>
+
+      <ul>
+
+        <li>Fully Custom Shopify Store</li>
+        <li>High Converting UI/UX</li>
+        <li>Unlimited Product Uploads</li>
+        <li>Premium Apps Setup</li>
+        <li>Advanced Speed Optimization</li>
+        <li>Complete SEO Setup</li>
+        <li>Automation Integration</li>
+        <li>Custom Landing Pages</li>
+        <li>VIP Priority Support</li>
+
+      </ul>
+
+      <a href="https://wa.me/923296625497?text=Assalam%20o%20Alaikum%20Aashir%20Bhai%2C%20I%20want%20the%20Professional%20Shopify%20Package%20for%20Rs.%2075000"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="plan-btn">
+
+         Order On WhatsApp
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- CTA -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="cta-box">
+
+        <h2>
+          Ready To Build<br>
+          Your Shopify Store?
+        </h2>
+
+        <p>
+
+          Whether you're launching a new brand or upgrading
+          an existing Shopify store, I can help create a premium
+          experience that drives real business growth.
+
+        </p>
+
+        <a href="https://wa.me/923296625497?text=Tell%20Me%20About%20your%20Shopify%20Store%20Services%20%F0%9F%92%95"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="cta-btn">
+
+   Start Your Project →
+
+</a>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    Crafted By
+    <span>Muhammad Aashir Abbas</span>
+    © 2025
+
+  </footer>
+
+</body>
+
+</html>

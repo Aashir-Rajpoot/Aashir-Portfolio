@@ -1,0 +1,760 @@
+<!-- ========================= marketing.html ========================= -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Digital Marketing — Muhammad Aashir Abbas</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="njnjnjnj.jpeg">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    :root{
+      --navy:#081120;
+      --deep:#0F172A;
+      --card:#132238;
+      --amber:#F59E0B;
+      --orange:#FB923C;
+      --cyan:#22D3EE;
+      --white:#F8FAFC;
+      --silver:#CBD5E1;
+      --muted:#94A3B8;
+      --font-display:'Playfair Display', serif;
+      --font-body:'DM Sans', sans-serif;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:var(--navy);
+      color:var(--white);
+      font-family:var(--font-body);
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1.2rem 3rem;
+
+  background: rgba(8,17,32,0.8);
+
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(34,211,238,0.1);
+}
+
+    .logo{
+  font-size:1.4rem;
+  font-weight:800;
+
+  font-family:var(--font-display);
+
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--cyan)
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+.back-btn{
+  padding:.8rem 1.4rem;
+
+  border-radius:8px;
+
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--orange)
+  );
+
+  color:#081120;
+
+  text-decoration:none;
+
+  font-weight:700;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.back-btn:hover{
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 15px 40px rgba(245,158,11,.25);
+}
+
+.hero{
+  min-height:100vh;
+
+  display:grid;
+
+  grid-template-columns:1.1fr .9fr;
+
+  align-items:center;
+
+  gap:5rem;
+
+  padding:8rem 7%;
+
+  overflow:hidden;
+}
+
+.mini{
+  display:inline-block;
+
+  padding:.5rem 1rem;
+
+  border-radius:100px;
+
+  background:rgba(34,211,238,.08);
+
+  border:1px solid rgba(34,211,238,.2);
+
+  color:var(--cyan);
+
+  font-size:.8rem;
+
+  letter-spacing:.15em;
+
+  margin-bottom:1.5rem;
+
+  text-transform:uppercase;
+}
+
+h1{
+  font-size:clamp(3rem,6vw,5rem);
+
+  line-height:1.05;
+
+  font-family:var(--font-display);
+
+  margin-bottom:1.5rem;
+
+  font-weight:900;
+}
+
+h1 span{
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--orange)
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+.hero p{
+  color:var(--silver);
+
+  line-height:1.9;
+
+  margin-bottom:2rem;
+
+  max-width:700px;
+}
+
+.tags{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:.8rem;
+}
+
+.tags span{
+  padding:.5rem 1rem;
+
+  border-radius:6px;
+
+  background:rgba(245,158,11,.08);
+
+  border:1px solid rgba(245,158,11,.2);
+
+  color:#FDBA74;
+
+  font-size:.85rem;
+}
+
+.hero-image img{
+  width:100%;
+
+  height:650px;
+
+  object-fit:cover;
+
+  border-radius:24px;
+
+  border:1px solid rgba(245,158,11,.2);
+
+  display:block;
+
+  box-shadow:
+    0 0 60px rgba(245,158,11,.15);
+}
+
+section{
+  padding:7rem 7%;
+}
+
+.section-title{
+  text-align:center;
+
+  margin-bottom:4rem;
+}
+
+.section-title small{
+  color:var(--cyan);
+
+  letter-spacing:.2em;
+
+  text-transform:uppercase;
+}
+
+.section-title h2{
+  font-size:clamp(2.5rem,5vw,3rem);
+
+  margin-top:1rem;
+
+  font-family:var(--font-display);
+
+  line-height:1.1;
+}
+
+.section-title h2 span{
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--orange)
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.5rem;
+    }
+
+    .card{
+      background:rgba(19,34,56,.6);
+
+      border:1px solid rgba(255,255,255,.06);
+
+      border-radius:20px;
+
+      padding:2rem;
+
+      transition:.4s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(245,158,11,.25);
+    }
+
+    .card h3{
+      margin-bottom:1rem;
+      font-size:1.4rem;
+    }
+
+    .card p{
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1.5rem;
+    }
+
+    .gallery img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+
+      border-radius:18px;
+
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .cta{
+      text-align:center;
+    }
+
+    .cta-box{
+      padding:4rem 2rem;
+
+      border-radius:30px;
+
+      background:linear-gradient(135deg,
+      rgba(245,158,11,.12),
+      rgba(34,211,238,.08));
+
+      border:1px solid rgba(245,158,11,.2);
+    }
+
+    .cta-box h2{
+      font-size:3rem;
+      margin-bottom:1rem;
+      font-family:var(--font-display);
+    }
+
+    .cta-box p{
+      color:var(--silver);
+      margin-bottom:2rem;
+    }
+
+    .cta-btn{
+      display:inline-block;
+
+      padding:1rem 2rem;
+
+      border-radius:10px;
+
+      background:linear-gradient(135deg,var(--amber),var(--orange));
+
+      color:#081120;
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    footer{
+      padding:2rem;
+      text-align:center;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+
+    footer span{
+      color:var(--amber);
+    }
+
+    @media(max-width:1000px){
+
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .gallery{
+        grid-template-columns:1fr;
+      }
+
+      nav{
+        padding:1rem 1.5rem;
+      }
+
+      section,
+      .hero{
+        padding-left:1.5rem;
+        padding-right:1.5rem;
+      }
+    }
+    /* ================= DIGITAL MARKETING PRICING ================= */
+
+.pricing-section{
+  padding:7rem 7%;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+  margin-top:4rem;
+}
+
+.pricing-card{
+  position:relative;
+
+  background:rgba(19,34,56,.65);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:24px;
+
+  padding:2.5rem 2rem;
+
+  transition:.4s;
+
+  overflow:hidden;
+}
+
+.pricing-card:hover{
+  transform:translateY(-10px);
+
+  border-color:rgba(245,158,11,.35);
+
+  box-shadow:0 25px 60px rgba(245,158,11,.12);
+}
+
+.featured-plan{
+  border:1px solid rgba(245,158,11,.45);
+
+  transform:scale(1.03);
+}
+
+.popular-tag{
+  position:absolute;
+  top:18px;
+  right:-45px;
+
+  background:linear-gradient(135deg,var(--amber),var(--orange));
+
+  color:var(--navy);
+
+  padding:.5rem 3rem;
+
+  font-size:.7rem;
+  font-weight:800;
+
+  transform:rotate(45deg);
+}
+
+.plan-name{
+  font-size:2rem;
+  font-family:var(--font-display);
+  margin-bottom:1rem;
+}
+
+.plan-price{
+  font-size:3rem;
+  font-weight:900;
+
+  color:var(--amber);
+
+  margin-bottom:.5rem;
+}
+
+.plan-desc{
+  color:var(--silver);
+  margin-bottom:2rem;
+}
+
+.plan-features{
+  list-style:none;
+  margin-bottom:2rem;
+}
+
+.plan-features li{
+  margin-bottom:1rem;
+  color:var(--white);
+
+  border-bottom:1px solid rgba(255,255,255,.06);
+
+  padding-bottom:.8rem;
+}
+
+.plan-btn{
+  display:block;
+
+  text-align:center;
+
+  padding:1rem;
+
+  border-radius:12px;
+
+  background:linear-gradient(135deg,var(--amber),var(--orange));
+
+  color:var(--navy);
+
+  font-weight:800;
+
+  transition:.3s;
+}
+
+.plan-btn:hover{
+  transform:translateY(-3px);
+}
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+
+    <div class="logo">Digital Marketing</div>
+
+    <a href="index.html" class="back-btn">
+      ← Back
+    </a>
+
+  </nav>
+
+  <section class="hero">
+
+    <div>
+
+      <div class="mini">
+        Growth & Performance Expert
+      </div>
+
+      <h1>
+        Digital <span>Marketing</span>
+      </h1>
+
+      <p>
+        I create powerful marketing systems using Meta Ads, SEO,
+        social media strategy, and performance-driven campaigns
+        that help brands increase visibility, traffic, and revenue.
+      </p>
+
+      <div class="tags">
+        <span>Meta Ads</span>
+        <span>SEO</span>
+        <span>Brand Growth</span>
+        <span>Analytics</span>
+        <span>Lead Generation</span>
+      </div>
+
+    </div>
+
+    <div class="hero-image">
+      <img src="r56.png" alt="">
+    </div>
+
+  </section>
+  
+
+  <section>
+
+    <div class="section-title">
+      <small>MARKETING SERVICES</small>
+      <h2>Growth <span>Solutions</span></h2>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Meta Ads</h3>
+        <p>
+          High-converting Facebook and Instagram ad campaigns
+          focused on ROI and audience targeting.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>SEO Strategy</h3>
+        <p>
+          Search optimization systems designed to improve
+          visibility and ranking.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Brand Awareness</h3>
+        <p>
+          Strategic campaigns that help brands grow authority
+          and audience trust.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section>
+
+    <div class="section-title">
+      <small>PROJECT SHOWCASE</small>
+      <h2>Marketing <span>Portfolio</span></h2>
+    </div>
+
+    <div class="gallery">
+
+      <img src="opop.jpg" alt="" onclick="openImage(this.src)">
+      <img src="6767.webp" alt="" onclick="openImage(this.src)">
+      <img src="35296.jpg" alt="" onclick="openImage(this.src)">
+
+    </div>
+
+  </section>
+  <!-- ================= DIGITAL MARKETING PRICING SECTION ================= -->
+
+<section class="pricing-section">
+
+  <div class="section-title">
+
+    <div class="small">
+      DIGITAL MARKETING PLANS
+    </div>
+
+    <h2>
+      Marketing Growth <span>Packages</span>
+    </h2>
+
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- BASIC -->
+
+    <div class="pricing-card">
+
+      <div class="plan-name">Basic</div>
+
+      <div class="plan-price">$120</div>
+
+      <div class="plan-desc">
+        Best for startups and small businesses.
+      </div>
+
+      <ul class="plan-features">
+        <li>✔ Social Media Setup</li>
+        <li>✔ 10 Post Designs</li>
+        <li>✔ Basic SEO</li>
+        <li>✔ 1 Platform Management</li>
+        <li>✔ Monthly Report</li>
+      </ul>
+
+      <a href="https://wa.me/923296625497?text=Assalam%20o%20Alikum%20I%20want%20Basic%20Digital%20Marketing%20Plan%20for%20$120"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="plan-btn">
+
+         Order Basic Plan
+
+      </a>
+
+    </div>
+
+    <!-- ADVANCE -->
+
+    <div class="pricing-card featured-plan">
+
+      <div class="popular-tag">
+        MOST POPULAR
+      </div>
+
+      <div class="plan-name">Advance</div>
+
+      <div class="plan-price">$280</div>
+
+      <div class="plan-desc">
+        Perfect for growing businesses and brands.
+      </div>
+
+      <ul class="plan-features">
+        <li>✔ Full Social Media Management</li>
+        <li>✔ 25 Premium Posts</li>
+        <li>✔ Advanced SEO</li>
+        <li>✔ Facebook & Instagram Ads</li>
+        <li>✔ Audience Targeting</li>
+        <li>✔ Weekly Reports</li>
+      </ul>
+
+      <a href="https://wa.me/923296625497?text=Assalam%20o%20Alikum%20I%20want%20Advance%20Digital%20Marketing%20Plan%20for%20$280"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="plan-btn">
+
+         Order Advance Plan
+
+      </a>
+
+    </div>
+
+    <!-- PROFESSIONAL -->
+
+    <div class="pricing-card">
+
+      <div class="plan-name">Professional</div>
+
+      <div class="plan-price">$550</div>
+
+      <div class="plan-desc">
+        Complete high-end marketing solution.
+      </div>
+
+      <ul class="plan-features">
+        <li>✔ Complete Brand Marketing</li>
+        <li>✔ Unlimited Post Designs</li>
+        <li>✔ Premium SEO Strategy</li>
+        <li>✔ Multi Platform Ads</li>
+        <li>✔ Competitor Research</li>
+        <li>✔ Conversion Optimization</li>
+        <li>✔ Full Analytics Reports</li>
+      </ul>
+
+      <a href="https://wa.me/923296625497?text=Assalam%20o%20Alikum%20I%20want%20Professional%20Digital%20Marketing%20Plan%20for%20$550"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="plan-btn">
+
+         Order Professional Plan
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <section class="cta">
+
+    <div class="cta-box">
+
+      <h2>
+        Let's Grow Your Brand
+      </h2>
+
+      <p>
+        Build strong campaigns, increase engagement,
+        and scale your online business faster.
+      </p>
+
+      <a href="https://wa.me/923296625497" class="cta-btn">
+        Start Marketing Project
+      </a>
+
+    </div>
+
+  </section>
+
+  <footer>
+    Crafted By <span>Muhammad Aashir Abbas</span> © 2025
+  </footer>
+
+</body>
+</html>

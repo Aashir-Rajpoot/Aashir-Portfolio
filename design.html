@@ -1,0 +1,1135 @@
+<!-- ========================= graphic-design.html ========================= -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Graphic Design — Muhammad Aashir Abbas</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="njnjnjnj.jpeg">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#081120;
+      --deep:#0F172A;
+      --card:#132238;
+      --slate:#1E293B;
+
+      --amber:#F59E0B;
+      --orange:#FB923C;
+      --gold:#FDBA74;
+
+      --cyan:#22D3EE;
+      --sky:#38BDF8;
+
+      --white:#F8FAFC;
+      --silver:#CBD5E1;
+      --muted:#94A3B8;
+
+      --font-display:'Playfair Display', serif;
+      --font-body:'DM Sans', sans-serif;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:var(--navy);
+      color:var(--white);
+      font-family:var(--font-body);
+      overflow-x:hidden;
+      line-height:1.7;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    /* NAVBAR */
+
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1.2rem 3rem;
+
+  background: rgba(8,17,32,0.8);
+
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(34,211,238,0.1);
+}
+    .logo{
+  font-size:1.4rem;
+  font-weight:800;
+  font-family:var(--font-display);
+
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--cyan)
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+.back-btn{
+  padding:.8rem 1.4rem;
+  border-radius:8px;
+
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--orange)
+  );
+
+  color:var(--navy);
+
+  font-weight:700;
+
+  transition:all .3s ease;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.back-btn:hover{
+  transform:translateY(-3px);
+
+  box-shadow:0 15px 40px rgba(245,158,11,.25);
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+
+  align-items:center;
+  gap:5rem;
+
+  padding:8rem 7%;
+
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:'';
+
+  position:absolute;
+
+  width:500px;
+  height:500px;
+
+  border-radius:50%;
+
+  background:radial-gradient(
+    circle,
+    rgba(245,158,11,.15) 0%,
+    transparent 70%
+  );
+
+  top:-100px;
+  right:-100px;
+}
+
+.hero-text{
+  position:relative;
+  z-index:2;
+}
+
+.mini{
+  display:inline-block;
+
+  padding:.5rem 1rem;
+  margin-bottom:1.5rem;
+
+  border-radius:100px;
+
+  background:rgba(34,211,238,.08);
+
+  border:1px solid rgba(34,211,238,.2);
+
+  color:var(--cyan);
+
+  font-size:.8rem;
+
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-size:clamp(3rem,6vw,5.5rem);
+
+  line-height:1.05;
+  margin-bottom:1.5rem;
+
+  font-family:var(--font-display);
+  font-weight:900;
+}
+
+.hero h1 span{
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--orange)
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+.hero p{
+  color:var(--silver);
+
+  font-size:1.08rem;
+
+  margin-bottom:2rem;
+  max-width:700px;
+
+  line-height:1.8;
+}
+
+.hero-tags{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:.8rem;
+
+  margin-bottom:2rem;
+}
+
+.hero-tags span{
+  padding:.5rem 1rem;
+
+  border-radius:6px;
+
+  background:rgba(245,158,11,.08);
+
+  border:1px solid rgba(245,158,11,.2);
+
+  color:var(--gold);
+
+  font-size:.85rem;
+}
+
+.hero-image{
+  position:relative;
+  z-index:2;
+}
+
+.hero-image img{
+  width:100%;
+  height:650px;
+
+  object-fit:cover;
+
+  border-radius:24px;
+
+  border:1px solid rgba(245,158,11,.25);
+
+  box-shadow:0 0 60px rgba(245,158,11,.15);
+
+  display:block;
+}
+
+/* SECTION */
+
+section{
+  padding:7rem 7%;
+  position:relative;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:4rem;
+}
+
+.section-title .small{
+  color:var(--cyan);
+
+  text-transform:uppercase;
+  letter-spacing:.2em;
+
+  font-size:.8rem;
+
+  margin-bottom:1rem;
+}
+
+.section-title h2{
+  font-size:clamp(2.3rem,5vw,4rem);
+
+  font-family:var(--font-display);
+
+  line-height:1.1;
+}
+
+.section-title h2 span{
+  background:linear-gradient(
+    135deg,
+    var(--amber),
+    var(--orange)
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+    /* SERVICES */
+
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.5rem;
+    }
+
+    .service-card{
+      background:rgba(19,34,56,.65);
+
+      border:1px solid rgba(255,255,255,.06);
+
+      border-radius:20px;
+
+      padding:2rem;
+
+      transition:.4s;
+    }
+
+    .service-card:hover{
+      transform:translateY(-8px);
+
+      border-color:rgba(245,158,11,.3);
+
+      box-shadow:0 20px 50px rgba(245,158,11,.08);
+    }
+
+    .service-card h3{
+      font-size:1.4rem;
+      margin-bottom:1rem;
+      color:var(--white);
+    }
+
+    .service-card p{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    /* GALLERY */
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1.5rem;
+    }
+
+    .gallery-box{
+      height:260px;
+
+      border-radius:18px;
+
+      overflow:hidden;
+
+      border:1px solid rgba(255,255,255,.08);
+
+      background:var(--card);
+
+      position:relative;
+    }
+
+    .gallery-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.5s;
+    }
+
+    .gallery-box:hover img{
+      transform:scale(1.08);
+    }
+
+    /* PROCESS */
+
+    .process{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:1.5rem;
+    }
+
+    .process-box{
+      background:rgba(19,34,56,.55);
+      border:1px solid rgba(255,255,255,.07);
+
+      padding:2rem;
+      border-radius:18px;
+
+      transition:.4s;
+    }
+
+    .process-box:hover{
+      transform:translateY(-6px);
+      border-color:rgba(34,211,238,.25);
+    }
+
+    .process-number{
+      font-size:2rem;
+      font-weight:800;
+      color:var(--amber);
+      margin-bottom:1rem;
+    }
+
+    .process-box h4{
+      margin-bottom:.8rem;
+      font-size:1.2rem;
+    }
+
+    .process-box p{
+      color:var(--muted);
+      font-size:.93rem;
+    }
+    /* ================= DIGITAL MARKETING PRICING ================= */
+
+.pricing-section{
+  padding:7rem 7%;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+  margin-top:4rem;
+}
+
+.pricing-card{
+  position:relative;
+
+  background:rgba(19,34,56,.65);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:24px;
+
+  padding:2.5rem 2rem;
+
+  transition:.4s;
+
+  overflow:hidden;
+}
+
+.pricing-card:hover{
+  transform:translateY(-10px);
+
+  border-color:rgba(245,158,11,.35);
+
+  box-shadow:0 25px 60px rgba(245,158,11,.12);
+}
+
+.featured-plan{
+  border:1px solid rgba(245,158,11,.45);
+
+  transform:scale(1.03);
+}
+
+.popular-tag{
+  position:absolute;
+  top:18px;
+  right:-45px;
+
+  background:linear-gradient(135deg,var(--amber),var(--orange));
+
+  color:var(--navy);
+
+  padding:.5rem 3rem;
+
+  font-size:.7rem;
+  font-weight:800;
+
+  transform:rotate(45deg);
+}
+
+.plan-name{
+  font-size:2rem;
+  font-family:var(--font-display);
+  margin-bottom:1rem;
+}
+
+.plan-price{
+  font-size:3rem;
+  font-weight:900;
+
+  color:var(--amber);
+
+  margin-bottom:.5rem;
+}
+
+.plan-desc{
+  color:var(--silver);
+  margin-bottom:2rem;
+}
+
+.plan-features{
+  list-style:none;
+  margin-bottom:2rem;
+}
+
+.plan-features li{
+  margin-bottom:1rem;
+  color:var(--white);
+
+  border-bottom:1px solid rgba(255,255,255,.06);
+
+  padding-bottom:.8rem;
+}
+
+.plan-btn{
+  display:block;
+
+  text-align:center;
+
+  padding:1rem;
+
+  border-radius:12px;
+
+  background:linear-gradient(135deg,var(--amber),var(--orange));
+
+  color:var(--navy);
+
+  font-weight:800;
+
+  transition:.3s;
+}
+
+.plan-btn:hover{
+  transform:translateY(-3px);
+}
+
+    /* CTA */
+
+    .cta{
+      text-align:center;
+
+      padding:5rem 7%;
+    }
+
+    .cta-box{
+      background:linear-gradient(135deg,
+      rgba(245,158,11,.12),
+      rgba(34,211,238,.08));
+
+      border:1px solid rgba(245,158,11,.2);
+
+      border-radius:30px;
+
+      padding:4rem 2rem;
+    }
+
+    .cta-box h2{
+      font-size:3rem;
+      margin-bottom:1rem;
+      font-family:var(--font-display);
+    }
+
+    .cta-box p{
+      color:var(--silver);
+      max-width:700px;
+      margin:auto auto 2rem;
+    }
+
+    .cta-btn{
+      display:inline-block;
+
+      padding:1rem 2rem;
+
+      border-radius:10px;
+
+      background:linear-gradient(135deg,var(--amber),var(--orange));
+
+      color:var(--navy);
+
+      font-weight:800;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:2rem;
+      text-align:center;
+      color:var(--muted);
+
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+
+    footer span{
+      color:var(--amber);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1000px){
+
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .gallery{
+        grid-template-columns:1fr;
+      }
+
+      nav{
+        padding:1rem 1.5rem;
+      }
+
+      section,
+      .hero{
+        padding-left:1.5rem;
+        padding-right:1.5rem;
+      }
+
+      .hero-image img{
+        height:500px;
+      }
+    }
+    /* PRICING SECTION */
+
+.pricing-section{
+  padding:7rem 7%;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+}
+
+.pricing-card{
+  position:relative;
+
+  background:rgba(19,34,56,.75);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:24px;
+
+  padding:3rem 2rem;
+
+  transition:.4s;
+}
+
+.pricing-card:hover{
+  transform:translateY(-10px);
+
+  border-color:rgba(245,158,11,.4);
+
+  box-shadow:0 20px 60px rgba(245,158,11,.15);
+}
+
+.featured-plan{
+  border:1px solid rgba(245,158,11,.45);
+
+  transform:scale(1.04);
+
+  background:
+  linear-gradient(
+  135deg,
+  rgba(245,158,11,.12),
+  rgba(34,211,238,.08));
+}
+
+.popular-tag{
+  position:absolute;
+  top:18px;
+  right:18px;
+
+  background:linear-gradient(135deg,var(--amber),var(--orange));
+
+  color:var(--navy);
+
+  padding:.4rem .9rem;
+
+  border-radius:100px;
+
+  font-size:.7rem;
+  font-weight:800;
+}
+
+.plan-name{
+  font-size:2rem;
+  margin-bottom:1rem;
+
+  font-family:var(--font-display);
+}
+
+.plan-price{
+  font-size:2.7rem;
+  font-weight:900;
+
+  color:var(--amber);
+
+  margin-bottom:2rem;
+}
+
+.pricing-card ul{
+  list-style:none;
+}
+
+.pricing-card ul li{
+  margin-bottom:1rem;
+
+  color:var(--silver);
+
+  padding-left:1.5rem;
+
+  position:relative;
+}
+
+.pricing-card ul li::before{
+  content:'✓';
+
+  position:absolute;
+  left:0;
+
+  color:var(--cyan);
+}
+
+.plan-btn{
+  display:inline-block;
+
+  margin-top:2rem;
+
+  width:100%;
+
+  text-align:center;
+
+  padding:1rem;
+
+  border-radius:12px;
+
+  background:
+  linear-gradient(135deg,var(--amber),var(--orange));
+
+  color:var(--navy);
+
+  font-weight:800;
+
+  transition:.3s;
+}
+
+.plan-btn:hover{
+  transform:translateY(-4px);
+
+  box-shadow:0 15px 40px rgba(245,158,11,.25);
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">Graphic Design</div>
+
+    <a href="index.html" class="back-btn">
+      ← Back
+    </a>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <div class="mini">
+        Creative Visual Designer
+      </div>
+
+      <h1>
+        Graphic <span>Design</span>
+      </h1>
+
+      <p>
+        I create modern, visually powerful, and professional graphic designs
+        that help brands stand out in the digital world through creativity,
+        strategy, and premium visual identity systems.
+      </p>
+
+      <div class="hero-tags">
+        <span>Logo Design</span>
+        <span>Brand Identity</span>
+        <span>Social Media Design</span>
+        <span>Poster Design</span>
+        <span>UI Graphics</span>
+      </div>
+
+    </div>
+
+    <div class="hero-image">
+
+      <!-- APNI MAIN DESIGNER IMAGE YA PORTRAIT YAHA ADD KARO -->
+      <img src="7467.png" alt="Graphic Designer">
+
+    </div>
+
+  </section>
+
+  <!-- SERVICES -->
+
+  <section>
+
+    <div class="section-title">
+
+      <div class="small">
+        WHAT I OFFER
+      </div>
+
+      <h2>
+        Creative Design <span>Services</span>
+      </h2>
+
+    </div>
+
+    <div class="service-grid">
+
+      <div class="service-card">
+        <h3>Logo Design</h3>
+        <p>
+          Unique and memorable logo concepts crafted
+          to build a strong brand identity.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Brand Identity</h3>
+        <p>
+          Complete branding systems including colors,
+          typography, and visual consistency.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Social Media Posts</h3>
+        <p>
+          Eye-catching social media graphics designed
+          to boost engagement and brand awareness.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Poster & Banner Design</h3>
+        <p>
+          High-quality promotional posters and banners
+          for businesses and marketing campaigns.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>YouTube Thumbnails</h3>
+        <p>
+          Professional thumbnails designed to increase
+          clicks, views, and audience attention.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>UI Graphics</h3>
+        <p>
+          Clean and modern visual elements for websites,
+          apps, and digital interfaces.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GALLERY -->
+
+  <section>
+
+    <div class="section-title">
+
+      <div class="small">
+        PORTFOLIO SHOWCASE
+      </div>
+
+      <h2>
+        Creative <span>Projects</span>
+      </h2>
+
+    </div>
+
+    <div class="gallery">
+
+      <div class="gallery-box">
+        <!-- DESIGN IMAGE 1 YAHA ADD KARO -->
+        <img src="1020.avif" alt="" onclick="openImage(this.src)">
+      </div>
+
+      <div class="gallery-box">
+        <!-- DESIGN IMAGE 2 YAHA ADD KARO -->
+        <img src="1030.avif" alt="" onclick="openImage(this.src)">
+      </div>
+
+      <div class="gallery-box">
+        <!-- DESIGN IMAGE 3 YAHA ADD KARO -->
+        <img src="1040.jpg" alt="" onclick="openImage(this.src)">
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROCESS -->
+
+  <section>
+
+    <div class="section-title">
+
+      <div class="small">
+        MY CREATIVE PROCESS
+      </div>
+
+      <h2>
+        Design Workflow <span>Process</span>
+      </h2>
+
+    </div>
+
+    <div class="process">
+
+      <div class="process-box">
+        <div class="process-number">01</div>
+        <h4>Research</h4>
+        <p>
+          Understanding brand goals, audience,
+          and market competition before designing.
+        </p>
+      </div>
+
+      <div class="process-box">
+        <div class="process-number">02</div>
+        <h4>Concept Creation</h4>
+        <p>
+          Building creative design concepts and
+          visual directions for the project.
+        </p>
+      </div>
+
+      <div class="process-box">
+        <div class="process-number">03</div>
+        <h4>Design Execution</h4>
+        <p>
+          Creating polished and premium visuals
+          using modern design techniques.
+        </p>
+      </div>
+
+      <div class="process-box">
+        <div class="process-number">04</div>
+        <h4>Final Delivery</h4>
+        <p>
+          Delivering optimized high-quality files
+          ready for print and digital platforms.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+    <!-- PRICING PLANS -->
+
+  <section class="pricing-section">
+
+    <div class="section-title">
+
+      <div class="small">
+        PRICING PLANS
+      </div>
+
+      <h2>
+        Choose Your <span>Design Package</span>
+      </h2>
+
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- BASIC -->
+
+      <div class="pricing-card">
+
+        <div class="plan-name">
+          Basic
+        </div>
+
+        <div class="plan-price">
+          Rs. 5,000
+        </div>
+
+        <ul>
+
+          <li>1 Professional Logo</li>
+          <li>2 Revisions</li>
+          <li>PNG + JPG Files</li>
+          <li>Fast Delivery</li>
+          <li>Basic Brand Style</li>
+
+        </ul>
+
+        <a href="https://wa.me/923296625497?text=Assalam%20o%20Alaikum%20Aashir%20Bhai%2C%20I%20want%20the%20Basic%20Graphic%20Design%20Plan%20for%20Rs.%205000"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="plan-btn">
+
+   Order On WhatsApp
+
+</a>
+
+      </div>
+
+      <!-- ADVANCE -->
+
+      <div class="pricing-card featured-plan">
+
+        <div class="popular-tag">
+          MOST POPULAR
+        </div>
+
+        <div class="plan-name">
+          Advance
+        </div>
+
+        <div class="plan-price">
+          Rs. 12,000
+        </div>
+
+        <ul>
+
+          <li>Premium Logo Design</li>
+          <li>Complete Brand Identity</li>
+          <li>Social Media Kit</li>
+          <li>Unlimited Revisions</li>
+          <li>HD Source Files</li>
+          <li>Priority Support</li>
+
+        </ul>
+
+        <a href="https://wa.me/923296625497?text=Assalam%20o%20Alaikum%20Aashir%20Bhai%2C%20I%20want%20the%20Advance%20Graphic%20Design%20Plan%20for%20Rs.%2012000"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="plan-btn">
+
+           Order On WhatsApp
+
+        </a>
+
+      </div>
+
+      <!-- PROFESSIONAL -->
+
+      <div class="pricing-card">
+
+        <div class="plan-name">
+          Professional
+        </div>
+
+        <div class="plan-price">
+          Rs. 25,000
+        </div>
+
+        <ul>
+
+          <li>Full Premium Branding</li>
+          <li>Logo + Brand Guidelines</li>
+          <li>Social Media Designs</li>
+          <li>Poster & Banner Designs</li>
+          <li>Unlimited Revisions</li>
+          <li>Source Files Included</li>
+          <li>VIP Priority Support</li>
+
+        </ul>
+
+        <a href="https://wa.me/923296625497?text=Assalam%20o%20Alaikum%20Aashir%20Bhai%2C%20I%20want%20the%20Professional%20Graphic%20Design%20Plan%20for%20Rs.%2025000"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="plan-btn">
+
+           Order On WhatsApp
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <div class="cta-box">
+
+      <h2>
+        Ready To Build Your Brand Identity?
+      </h2>
+
+      <p>
+        Let's create modern and visually powerful designs
+        that elevate your business and attract attention.
+      </p>
+<a href="https://wa.me/923296625497?text=Sir%20Asalam%20o%20Alikum"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="cta-btn">
+
+   Start Your Design Project
+
+</a>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    Crafted By
+    <span>Muhammad Aashir Abbas</span>
+    © 2025
+
+  </footer>
+
+</body>
+</html>

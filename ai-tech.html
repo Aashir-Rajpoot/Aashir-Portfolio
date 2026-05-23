@@ -1,0 +1,979 @@
+<!-- ========================= ai-powered-solutions.html ========================= -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AI Powered Solutions — Muhammad Aashir Abbas</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="njnjnjnj.jpeg">
+  
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#081120;
+      --deep:#0F172A;
+      --card:#132238;
+      --slate:#1E293B;
+
+      --amber:#F59E0B;
+      --orange:#FB923C;
+      --gold:#FDBA74;
+
+      --cyan:#22D3EE;
+      --sky:#38BDF8;
+
+      --white:#F8FAFC;
+      --silver:#CBD5E1;
+      --muted:#94A3B8;
+
+      --font-display:'Playfair Display', serif;
+      --font-body:'DM Sans', sans-serif;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:var(--navy);
+      color:var(--white);
+      font-family:var(--font-body);
+      overflow-x:hidden;
+      line-height:1.7;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    /* NAVBAR */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:1.2rem 3rem;
+
+  background:rgba(8,17,32,.8);
+
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+
+  border-bottom:1px solid rgba(34,211,238,.1);
+}
+
+    .logo{
+      font-size:1.4rem;
+      font-weight:800;
+      font-family:var(--font-display);
+
+      background:linear-gradient(135deg,var(--amber),var(--cyan));
+      -webkit-background-clip: text;
+background-clip: text;
+
+      -webkit-text-fill-color:transparent;
+    }
+
+    .back-btn{
+      padding:.8rem 1.4rem;
+      border-radius:8px;
+
+      background:linear-gradient(135deg,var(--amber),var(--orange));
+      color:var(--navy);
+
+      font-weight:700;
+      transition:.3s;
+    }
+
+    .back-btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 15px 40px rgba(245,158,11,.25);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
+      gap:5rem;
+
+      padding:8rem 7%;
+      position:relative;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:500px;
+      height:500px;
+      border-radius:50%;
+
+      background:radial-gradient(circle,
+      rgba(34,211,238,.15) 0%,
+      transparent 70%);
+
+      top:-100px;
+      right:-100px;
+    }
+
+    .hero-text{
+      position:relative;
+      z-index:2;
+    }
+
+    .mini{
+      display:inline-block;
+
+      padding:.5rem 1rem;
+      margin-bottom:1.5rem;
+
+      border-radius:100px;
+
+      background:rgba(34,211,238,.08);
+      border:1px solid rgba(34,211,238,.2);
+
+      color:var(--cyan);
+
+      font-size:.8rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .hero h1{
+      font-size:clamp(3rem,6vw,5.5rem);
+      line-height:1.05;
+      margin-bottom:1.5rem;
+
+      font-family:var(--font-display);
+      font-weight:900;
+    }
+
+    .hero h1 span{
+  background:linear-gradient(
+    135deg,
+    var(--cyan),
+    var(--sky)
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+.hero p{
+  color:var(--silver);
+
+  font-size:1.08rem;
+
+  margin-bottom:2rem;
+
+  max-width:700px;
+
+  line-height:1.8;
+}
+
+.hero-tags{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:.8rem;
+
+  margin-bottom:2rem;
+}
+
+.hero-tags span{
+  padding:.5rem 1rem;
+
+  border-radius:6px;
+
+  background:rgba(34,211,238,.08);
+
+  border:1px solid rgba(34,211,238,.2);
+
+  color:var(--cyan);
+
+  font-size:.85rem;
+}
+
+.hero-image{
+  position:relative;
+
+  z-index:2;
+}
+
+.hero-image img{
+  width:100%;
+
+  height:650px;
+
+  object-fit:cover;
+
+  border-radius:24px;
+
+  border:1px solid rgba(34,211,238,.25);
+
+  box-shadow:
+    0 0 60px rgba(34,211,238,.15);
+
+  display:block;
+}
+
+/* SECTION */
+
+section{
+  padding:7rem 7%;
+
+  position:relative;
+}
+
+.section-title{
+  text-align:center;
+
+  margin-bottom:4rem;
+}
+
+.section-title .small{
+  color:var(--cyan);
+
+  text-transform:uppercase;
+
+  letter-spacing:.2em;
+
+  font-size:.8rem;
+
+  margin-bottom:1rem;
+}
+
+.section-title h2{
+  font-size:clamp(2.3rem,5vw,4rem);
+
+  font-family:var(--font-display);
+
+  line-height:1.1;
+}
+
+.section-title h2 span{
+  background:linear-gradient(
+    135deg,
+    var(--cyan),
+    var(--sky)
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+    /* SERVICES */
+
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.5rem;
+    }
+
+    .service-card{
+      background:rgba(19,34,56,.65);
+
+      border:1px solid rgba(255,255,255,.06);
+
+      border-radius:20px;
+
+      padding:2rem;
+
+      transition:.4s;
+    }
+
+    .service-card:hover{
+      transform:translateY(-8px);
+
+      border-color:rgba(34,211,238,.3);
+
+      box-shadow:0 20px 50px rgba(34,211,238,.08);
+    }
+
+    .service-card h3{
+      font-size:1.4rem;
+      margin-bottom:1rem;
+      color:var(--white);
+    }
+
+    .service-card p{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    /* GALLERY */
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1.5rem;
+    }
+
+    .gallery-box{
+      height:260px;
+
+      border-radius:18px;
+
+      overflow:hidden;
+
+      border:1px solid rgba(255,255,255,.08);
+
+      background:var(--card);
+
+      position:relative;
+    }
+
+    .gallery-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.5s;
+    }
+
+    .gallery-box:hover img{
+      transform:scale(1.08);
+    }
+
+    /* PROCESS */
+
+    .process{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:1.5rem;
+    }
+
+    .process-box{
+      background:rgba(19,34,56,.55);
+      border:1px solid rgba(255,255,255,.07);
+
+      padding:2rem;
+      border-radius:18px;
+
+      transition:.4s;
+    }
+
+    .process-box:hover{
+      transform:translateY(-6px);
+      border-color:rgba(34,211,238,.25);
+    }
+
+    .process-number{
+      font-size:2rem;
+      font-weight:800;
+      color:var(--cyan);
+      margin-bottom:1rem;
+    }
+
+    .process-box h4{
+      margin-bottom:.8rem;
+      font-size:1.2rem;
+    }
+
+    .process-box p{
+      color:var(--muted);
+      font-size:.93rem;
+    }
+    /* ================= DIGITAL MARKETING PRICING ================= */
+
+.pricing-section{
+  padding:7rem 7%;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+  margin-top:4rem;
+}
+
+.pricing-card{
+  position:relative;
+
+  background:rgba(19,34,56,.65);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:24px;
+
+  padding:2.5rem 2rem;
+
+  transition:.4s;
+
+  overflow:hidden;
+}
+
+.pricing-card:hover{
+  transform:translateY(-10px);
+
+  border-color:rgba(245,158,11,.35);
+
+  box-shadow:0 25px 60px rgba(245,158,11,.12);
+}
+
+.featured-plan{
+  border:1px solid rgba(245,158,11,.45);
+
+  transform:scale(1.03);
+}
+
+.popular-tag{
+  position:absolute;
+  top:18px;
+  right:-45px;
+
+  background:linear-gradient(135deg,var(--amber),var(--orange));
+
+  color:var(--navy);
+
+  padding:.5rem 3rem;
+
+  font-size:.7rem;
+  font-weight:800;
+
+  transform:rotate(45deg);
+}
+
+.plan-name{
+  font-size:2rem;
+  font-family:var(--font-display);
+  margin-bottom:1rem;
+}
+
+.plan-price{
+  font-size:3rem;
+  font-weight:900;
+
+  color:var(--amber);
+
+  margin-bottom:.5rem;
+}
+
+.plan-desc{
+  color:var(--silver);
+  margin-bottom:2rem;
+}
+
+.plan-features{
+  list-style:none;
+  margin-bottom:2rem;
+}
+
+.plan-features li{
+  margin-bottom:1rem;
+  color:var(--white);
+
+  border-bottom:1px solid rgba(255,255,255,.06);
+
+  padding-bottom:.8rem;
+}
+
+.plan-btn{
+  display:block;
+
+  text-align:center;
+
+  padding:1rem;
+
+  border-radius:12px;
+
+  background:linear-gradient(135deg,var(--amber),var(--orange));
+
+  color:var(--navy);
+
+  font-weight:800;
+
+  transition:.3s;
+}
+
+.plan-btn:hover{
+  transform:translateY(-3px);
+}
+
+    /* CTA */
+
+    .cta{
+      text-align:center;
+
+      padding:5rem 7%;
+    }
+
+    .cta-box{
+      background:linear-gradient(135deg,
+      rgba(34,211,238,.12),
+      rgba(56,189,248,.08));
+
+      border:1px solid rgba(34,211,238,.2);
+
+      border-radius:30px;
+
+      padding:4rem 2rem;
+    }
+
+    .cta-box h2{
+      font-size:3rem;
+      margin-bottom:1rem;
+      font-family:var(--font-display);
+    }
+
+    .cta-box p{
+      color:var(--silver);
+      max-width:700px;
+      margin:auto auto 2rem;
+    }
+
+    .cta-btn{
+      display:inline-block;
+
+      padding:1rem 2rem;
+
+      border-radius:10px;
+
+      background:linear-gradient(135deg,var(--cyan),var(--sky));
+
+      color:var(--navy);
+
+      font-weight:800;
+    }
+
+    footer{
+      padding:2rem;
+      text-align:center;
+      color:var(--muted);
+
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+
+    footer span{
+      color:var(--cyan);
+    }
+
+    @media(max-width:1000px){
+
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .gallery{
+        grid-template-columns:1fr;
+      }
+
+      nav{
+        padding:1rem 1.5rem;
+      }
+
+      section,
+      .hero{
+        padding-left:1.5rem;
+        padding-right:1.5rem;
+      }
+
+      .hero-image img{
+        height:500px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">AI Powered Solutions</div>
+
+    <a href="index.html" class="back-btn">
+      ← Back
+    </a>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <div class="mini">
+        Future Driven AI Services
+      </div>
+
+      <h1>
+        AI Powered <span>Solutions</span>
+      </h1>
+
+      <p>
+        I build intelligent AI-powered solutions that automate workflows,
+        enhance productivity, and help businesses grow using modern
+        artificial intelligence technologies and smart digital systems.
+      </p>
+
+      <div class="hero-tags">
+        <span>AI Automation</span>
+        <span>Chatbots</span>
+        <span>Smart Websites</span>
+        <span>AI Tools</span>
+        <span>Digital Innovation</span>
+      </div>
+
+    </div>
+
+    <div class="hero-image">
+
+      <!-- AI MAIN IMAGE YA PORTRAIT YAHA ADD KARO -->
+      <img src="koko.png" alt="AI Solutions">
+
+    </div>
+
+  </section>
+
+  <!-- SERVICES -->
+
+  <section>
+
+    <div class="section-title">
+
+      <div class="small">
+        WHAT I OFFER
+      </div>
+
+      <h2>
+        AI Based <span>Services</span>
+      </h2>
+
+    </div>
+
+    <div class="service-grid">
+
+      <div class="service-card">
+        <h3>AI Chatbots</h3>
+        <p>
+          Smart AI chatbots for customer support,
+          automation, and real-time communication.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>AI Websites</h3>
+        <p>
+          Modern websites integrated with AI tools
+          and intelligent user experiences.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Automation Systems</h3>
+        <p>
+          Workflow automation solutions that save
+          time and increase productivity.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>AI Content Tools</h3>
+        <p>
+          AI-powered systems for generating content,
+          ideas, and creative digital assets.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Image Enhancement AI</h3>
+        <p>
+          Advanced AI image processing and enhancement
+          tools for high-quality visuals.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Custom AI Projects</h3>
+        <p>
+          Tailored AI solutions designed specifically
+          for business and brand requirements.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GALLERY -->
+
+  <section>
+
+    <div class="section-title">
+
+      <div class="small">
+        PROJECT SHOWCASE
+      </div>
+
+      <h2>
+        AI Creative <span>Projects</span>
+      </h2>
+
+    </div>
+
+    <div class="gallery">
+
+      <div class="gallery-box">
+        <!-- AI PROJECT IMAGE 1 YAHA ADD KARO -->
+        <img src="34343ai.png" alt="" onclick="openImage(this.src)">
+      </div>
+
+      <div class="gallery-box">
+        <!-- AI PROJECT IMAGE 2 YAHA ADD KARO -->
+        <img src="9898ai.jpg" alt="" onclick="openImage(this.src)">
+      </div>
+
+      <div class="gallery-box">
+        <!-- AI PROJECT IMAGE 3 YAHA ADD KARO -->
+        <img src="45454ai.jpg" alt="" onclick="openImage(this.src)">
+      </div>
+
+    </div>
+
+  </section>
+  <!-- ================= AI TECH PRICING SECTION ================= -->
+
+<section class="pricing-section">
+
+  <div class="section-title">
+
+    <div class="small">
+      AI TECH PLANS
+    </div>
+
+    <h2>
+      Smart AI <span>Solutions</span>
+    </h2>
+
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- BASIC -->
+
+    <div class="pricing-card">
+
+      <div class="plan-name">Basic</div>
+
+      <div class="plan-price">$150</div>
+
+      <div class="plan-desc">
+        Perfect for startups and beginner AI projects.
+      </div>
+
+      <ul class="plan-features">
+        <li>✔ AI Chatbot Setup</li>
+        <li>✔ Basic Automation</li>
+        <li>✔ AI Tool Integration</li>
+        <li>✔ 1 AI Workflow</li>
+        <li>✔ Support Included</li>
+      </ul>
+
+      <a href="https://wa.me/923296625497?text=Assalam%20o%20Alikum%20I%20want%20Basic%20AI%20Tech%20Plan%20for%20$150"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="plan-btn">
+
+   Order Basic Plan
+
+</a>
+
+    </div>
+
+    <!-- ADVANCE -->
+
+    <div class="pricing-card featured-plan">
+
+      <div class="popular-tag">
+        MOST POPULAR
+      </div>
+
+      <div class="plan-name">Advance</div>
+
+      <div class="plan-price">$350</div>
+
+      <div class="plan-desc">
+        Advanced AI systems for growing businesses.
+      </div>
+
+      <ul class="plan-features">
+        <li>✔ AI Assistant Development</li>
+        <li>✔ Workflow Automation</li>
+        <li>✔ Smart AI Integrations</li>
+        <li>✔ AI Content Systems</li>
+        <li>✔ Business Optimization</li>
+        <li>✔ Premium Support</li>
+      </ul>
+
+      <a href="https://wa.me/923296625497?text=Assalam%20o%20Alikum%20I%20want%20Advance%20AI%20Tech%20Plan%20for%20$350"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="plan-btn">
+
+         Order Advance Plan
+
+      </a>
+
+    </div>
+
+    <!-- PROFESSIONAL -->
+
+    <div class="pricing-card">
+
+      <div class="plan-name">Professional</div>
+
+      <div class="plan-price">$800</div>
+
+      <div class="plan-desc">
+        Full enterprise-level AI ecosystem solution.
+      </div>
+
+      <ul class="plan-features">
+        <li>✔ Custom AI Software</li>
+        <li>✔ AI Voice Assistant</li>
+        <li>✔ Advanced Automation</li>
+        <li>✔ AI Business Systems</li>
+        <li>✔ API & AI Integrations</li>
+        <li>✔ High-Level Strategy</li>
+        <li>✔ Long-Term Support</li>
+      </ul>
+
+      <a href="https://wa.me/923296625497?text=Assalam%20o%20Alikum%20I%20want%20Professional%20AI%20Tech%20Plan%20for%20$800"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="plan-btn">
+
+         Order Professional Plan
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- PROCESS -->
+
+  <section>
+
+    <div class="section-title">
+
+      <div class="small">
+        WORK PROCESS
+      </div>
+
+      <h2>
+        AI Development <span>Workflow</span>
+      </h2>
+
+    </div>
+
+    <div class="process">
+
+      <div class="process-box">
+        <div class="process-number">01</div>
+        <h4>Planning</h4>
+        <p>
+          Understanding business goals and identifying
+          the best AI solution strategy.
+        </p>
+      </div>
+
+      <div class="process-box">
+        <div class="process-number">02</div>
+        <h4>Development</h4>
+        <p>
+          Creating powerful AI systems using modern
+          technologies and automation tools.
+        </p>
+      </div>
+
+      <div class="process-box">
+        <div class="process-number">03</div>
+        <h4>Optimization</h4>
+        <p>
+          Improving AI performance, speed,
+          and user experience for maximum results.
+        </p>
+      </div>
+
+      <div class="process-box">
+        <div class="process-number">04</div>
+        <h4>Deployment</h4>
+        <p>
+          Launching and maintaining scalable AI
+          solutions for long-term growth.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <div class="cta-box">
+
+      <h2>
+        Ready To Transform With AI?
+      </h2>
+
+      <p>
+  Let's create intelligent AI-powered systems
+  that automate your business and unlock growth.
+</p>
+
+<a 
+  href="https://wa.me/923296625497?text=Sir%20Asalam%20o%20Alikum"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="cta-btn"
+>
+  Start Your AI Project
+</a>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    Crafted By
+    <span>Muhammad Aashir Abbas</span>
+    © 2025
+
+  </footer>
+
+</body>
+</html>

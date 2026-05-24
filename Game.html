@@ -6,6 +6,129 @@
 <title>RED BALL ADVENTURE X PRO</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
+  /* ───────── MOBILE GAME CONTROLS ───────── */
+
+#mobile-ctrl{
+  position:fixed;
+  bottom:25px;
+  left:20px;
+  z-index:999;
+  display:none;
+  flex-direction:column;
+  gap:10px;
+  pointer-events:auto;
+}
+
+.ctrl-row{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+}
+
+.ctrl-btn{
+  width:68px;
+  height:68px;
+  border-radius:18px;
+  border:2px solid rgba(255,80,80,.45);
+  background:rgba(0,0,0,.45);
+  color:#fff;
+  font-size:28px;
+  font-weight:bold;
+
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 0 12px rgba(255,0,0,.25),
+    inset 0 0 10px rgba(255,255,255,.08);
+
+  transition:.12s;
+}
+
+.ctrl-btn:active{
+  transform:scale(.92);
+  background:rgba(255,60,60,.35);
+}
+
+/* RIGHT ACTION BUTTONS */
+
+#mobile-right-btns{
+  position:fixed;
+  right:20px;
+  bottom:25px;
+  z-index:999;
+  display:none;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:14px;
+  pointer-events:auto;
+}
+
+.action-btn{
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  border:2px solid rgba(255,180,0,.45);
+  background:rgba(0,0,0,.45);
+  color:#fff;
+  font-size:16px;
+  font-weight:900;
+  letter-spacing:1px;
+
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 0 15px rgba(255,140,0,.3),
+    inset 0 0 12px rgba(255,255,255,.08);
+
+  transition:.12s;
+}
+
+.action-btn:active{
+  transform:scale(.9);
+  background:rgba(255,140,0,.35);
+}
+
+/* MOBILE ONLY */
+
+@media (max-width:900px){
+
+  #mobile-ctrl,
+  #mobile-right-btns{
+    display:flex;
+  }
+
+  /* Hide extra UI on small screens */
+  #minimap{
+    display:none;
+  }
+
+  #objective{
+    top:95px;
+    width:92%;
+    font-size:11px;
+  }
+
+  #hud-top{
+    padding:8px;
+    gap:6px;
+  }
+
+  .hud-panel{
+    min-width:58px;
+    padding:6px 10px;
+  }
+
+  .hud-val{
+    font-size:18px;
+  }
+
+  #pause-btn{
+    top:10px;
+    right:10px;
+  }
+}
 *{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 html,body{ width:100%; height:100%; overflow:hidden; background:#000; font-family:Arial,sans-serif; -webkit-user-select:none; user-select:none; }
 canvas{ display:block; }
@@ -177,7 +300,7 @@ button{ border:none; cursor:pointer; font:inherit; }
 <div id="coin-progress-wrap">
   <div id="coin-label">COINS TO NEXT LEVEL</div>
   <div id="coin-bar-bg"><div id="coin-bar"></div></div>
-  <div id="coin-count-text">0 / 100</div>
+  <div id="coin-count-text">0 / 10</div>
 </div>
 
 <div id="objective"></div>
@@ -212,7 +335,7 @@ button{ border:none; cursor:pointer; font:inherit; }
     <b>Shift / E</b> – Dash<br>
     <b>F / Click</b> – Shoot bullets<br>
     <div style="margin-top:12px;padding:10px;border:1px solid rgba(255,215,0,.4);border-radius:10px;background:rgba(255,215,0,.08);">
-      🪙 <b style="color:#ffd700">Collect 100 coins</b> to advance to the next level!<br>
+      🪙 <b style="color:#ffd700">Collect required coins</b> to advance to the next level!<br>
       👾 <b style="color:#ff6666">Shoot enemies</b> for bonus coins & score!<br>
       ❤️ <b>Avoid enemy contact</b> – they drain your HP!
     </div>
@@ -290,7 +413,8 @@ const game = {
   score:0, lives:3, level:1,
   coins:0,            // current level coins
   totalCoins:0,       // all-time coins
-  COINS_PER_LEVEL:100,
+  MAX_LEVEL: 50,
+COINS_PER_LEVEL: 10,
   health:100, maxHealth:100,
   damageCooldown:0,
 
@@ -413,8 +537,8 @@ const game = {
 
   // ─── Coins ──────────────────────────────────────────────────────
   spawnCoins(){
-    // Spawn more coins than needed (player collects 100)
-    const count = 120 + this.level * 10;
+    // Spawn extra coins for easier gameplay
+    const count = this.COINS_PER_LEVEL + 25;
     for(let i=0; i<count; i++){
       this.spawnCoin(
         (Math.random()-0.5)*80,
@@ -740,7 +864,7 @@ const game = {
           this.showMessage(`🪙 ${this.coins} / ${this.COINS_PER_LEVEL} coins!`);
         }
 
-        // Level up at 100 coins
+        // Level complete when required coins collected
         if(this.coins >= this.COINS_PER_LEVEL){
           this.levelComplete();
         }
@@ -749,54 +873,126 @@ const game = {
   },
 
   levelComplete(){
+
+  // FINAL LEVEL COMPLETE
+  if(this.level >= this.MAX_LEVEL){
+
     this.playing = false;
+
     Audio.levelUp();
-    document.getElementById('lc-title').textContent = '✨ LEVEL COMPLETE!';
+
+    document.getElementById('lc-title').textContent =
+      '🏆 CONGRATULATIONS!';
+
     document.getElementById('lc-stats').innerHTML =
-      `Level ${this.level} Cleared!<br>` +
-      `Coins Collected: ${this.coins}<br>` +
-      `Score: ${this.score}<br>` +
-      `Lives Remaining: ${'❤'.repeat(this.lives)}`;
+      `
+      YOU COMPLETED ALL 50 LEVELS! 🎉<br><br>
+
+      🏆 TROPHY UNLOCKED 🏆<br><br>
+
+      Final Score: ${this.score}<br>
+      Total Coins: ${this.totalCoins}
+      `;
+
+    document.getElementById('lc-next').style.display = 'none';
+
     document.getElementById('level-complete').style.display = 'flex';
-  },
 
-  nextLevel(){
-    this.level++;
-    this.coins = 0;
-    this.health = this.maxHealth;
-    document.getElementById('health-bar').style.width='100%';
-    document.getElementById('level-complete').style.display='none';
-    this.player.position.set(0,3,0);
-    this.velocity.set(0,0,0);
+    return;
+  }
 
-    // Rebuild world for new level
-    // Remove old floor/grid (they were added without tracking, so rebuild scene)
-    // Clear scene children except renderer canvas
-    while(this.scene.children.length > 0) this.scene.remove(this.scene.children[0]);
-    this.platforms=[];
-    this.coinObjects=[];
-    this.enemies=[];
-    this.bullets=[];
+  // NORMAL LEVEL COMPLETE
+  this.playing = false;
 
-    this.addLights();
-    this.buildLevel();
-    this.createPlayer();
-    this.playing = true;
-    this.updateHUD();
-    this.showBanner(`LEVEL ${this.level}`, `COLLECT ${this.COINS_PER_LEVEL} COINS!`);
-  },
+  Audio.levelUp();
 
-  // ─── Player ─────────────────────────────────────────────────────
-  createPlayer(){
-    if(this.player) this.scene.remove(this.player);
-    this.player = new THREE.Mesh(
-      new THREE.SphereGeometry(0.8, 32, 32),
-      new THREE.MeshStandardMaterial({color:0xff0000, emissive:0x440000, emissiveIntensity:0.3, roughness:0.3, metalness:0.4})
-    );
-    this.player.castShadow = true;
-    this.player.position.set(0,3,0);
-    this.scene.add(this.player);
-  },
+  document.getElementById('lc-next').style.display = 'block';
+
+  document.getElementById('lc-title').textContent =
+    '✨ LEVEL COMPLETE!';
+
+  document.getElementById('lc-stats').innerHTML =
+    `
+    Level ${this.level} Cleared!<br>
+    Coins Collected: ${this.coins}<br>
+    Score: ${this.score}<br>
+    Lives Remaining: ${'❤'.repeat(this.lives)}
+    `;
+
+  document.getElementById('level-complete').style.display = 'flex';
+},
+
+nextLevel(){
+
+  this.level++;
+
+  // Coins requirement increase every level
+  this.COINS_PER_LEVEL = this.level * 10;
+
+  this.coins = 0;
+
+  this.health = this.maxHealth;
+
+  document.getElementById('health-bar').style.width='100%';
+
+  document.getElementById('level-complete').style.display='none';
+
+  this.player.position.set(0,3,0);
+
+  this.velocity.set(0,0,0);
+
+  // CLEAR OLD LEVEL
+  while(this.scene.children.length > 0){
+    this.scene.remove(this.scene.children[0]);
+  }
+
+  this.platforms = [];
+  this.coinObjects = [];
+  this.enemies = [];
+  this.bullets = [];
+
+  // BUILD NEW LEVEL
+  this.addLights();
+
+  this.buildLevel();
+
+  this.createPlayer();
+
+  this.playing = true;
+
+  this.updateHUD();
+
+  this.showBanner(
+    `LEVEL ${this.level}`,
+    `COLLECT ${this.COINS_PER_LEVEL} COINS!`
+  );
+},
+
+// ─── Player ─────────────────────────────────────────────────────
+createPlayer(){
+
+  if(this.player){
+    this.scene.remove(this.player);
+  }
+
+  this.player = new THREE.Mesh(
+    new THREE.SphereGeometry(0.8, 32, 32),
+
+    new THREE.MeshStandardMaterial({
+      color:0xff0000,
+      emissive:0x440000,
+      emissiveIntensity:0.3,
+      roughness:0.3,
+      metalness:0.4
+    })
+  );
+
+  this.player.castShadow = true;
+
+  this.player.position.set(0,3,0);
+
+  this.scene.add(this.player);
+},
 
   updatePlayer(t){
     const speed = 0.022;
@@ -920,13 +1116,14 @@ const game = {
     document.getElementById('h-score').textContent = this.score;
     document.getElementById('h-lives').textContent = '❤'.repeat(Math.max(0,this.lives));
     document.getElementById('h-level').textContent = this.level;
-    document.getElementById('h-coins').textContent = this.totalCoins;
+    document.getElementById('h-coins').textContent =
+`${this.coins}/${this.COINS_PER_LEVEL}`;
     document.getElementById('health-bar').style.width = (this.health/this.maxHealth*100)+'%';
 
     const pct = Math.min(this.coins/this.COINS_PER_LEVEL*100, 100);
     document.getElementById('coin-bar').style.width = pct+'%';
     document.getElementById('coin-count-text').textContent = `${this.coins} / ${this.COINS_PER_LEVEL}`;
-
+this.COINS_PER_LEVEL = this.level * 10;
     const remaining = Math.max(0, this.COINS_PER_LEVEL - this.coins);
     document.getElementById('objective').textContent =
       remaining > 0
@@ -1050,10 +1247,14 @@ const game = {
   },
 
   fullRestart(){
-    this.score=0; this.lives=3; this.level=1;
+    this.score=0;
+this.lives=3;
+this.level=1;
+this.COINS_PER_LEVEL = 10;
     this.coins=0; this.totalCoins=0;
     this.health=this.maxHealth;
     document.getElementById('gameover-screen').classList.add('hidden');
+    document.getElementById('lc-next').style.display = 'block';
     document.getElementById('health-bar').style.width='100%';
 
     while(this.scene.children.length>0) this.scene.remove(this.scene.children[0]);
@@ -1061,7 +1262,7 @@ const game = {
     this.addLights(); this.buildLevel(); this.createPlayer();
 
     this.playing=true; this.updateHUD();
-    this.showBanner('LEVEL 1','COLLECT 100 COINS!');
+    this.showBanner('LEVEL 1','COLLECT 10 COINS!');
   },
 
   resume(){

@@ -801,18 +801,7 @@ nav {
         <p>Fill in the details below and I'll get back to you within an hour.</p>
       </div>
 
-      <form class="form-grid" id="bookingForm"
-action="https://formsubmit.co/ajax/aashirrajpoot757@gmail.com"
-method="POST">
-<input type="hidden" name="_subject" value="🚀 New Consultation Booking">
-
-<input type="hidden" name="_captcha" value="false">
-
-<input type="hidden" name="_template" value="table">
-
-<input type="hidden" name="_autoresponse"
-value="Thank you for booking a consultation with Muhammad Aashir Abbas. Your request has been received successfully. I will contact you shortly.">
-
+      <form class="form-grid" id="bookingForm">
         <div class="form-group">
           <label><i class="fas fa-user"></i>Full Name</label>
           <input type="text" id="fullName" placeholder="Your full name" autocomplete="name">
@@ -931,13 +920,20 @@ value="Thank you for booking a consultation with Muhammad Aashir Abbas. Your req
         </div>
 
       <button type="submit" class="submit-btn" id="submitBtn">
-        <span class="btn-text">
-          <span id="btnLabel">Book My Consultation</span>
-          <i class="fas fa-arrow-right" id="btnIcon"></i>
-          <div class="spinner" id="btnSpinner"></div>
-        </span>
-        </form>
-      </button>
+
+  <span class="btn-text">
+
+    <span id="btnLabel">
+      Book My Consultation
+    </span>
+
+    <i class="fab fa-whatsapp" id="btnIcon"></i>
+
+  </span>
+
+</button>
+
+</form>
 
       <p style="text-align:center;margin-top:16px;font-size:0.75rem;color:rgba(255,255,255,0.3);font-family:'JetBrains Mono',monospace;">
         <i class="fas fa-lock" style="color:var(--gold);margin-right:6px;"></i>Your information is 100% private and secure.
@@ -1235,6 +1231,76 @@ value="Thank you for booking a consultation with Muhammad Aashir Abbas. Your req
   /* ── SET MIN DATE ── */
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('prefDate').setAttribute('min', today);
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+
+  e.preventDefault();
+
+  const fullName =
+    document.getElementById("fullName").value;
+
+  const email =
+    document.getElementById("emailAddr").value;
+
+  const whatsapp =
+    document.getElementById("whatsappNum").value;
+
+  const service =
+    document.getElementById("serviceSelect").value;
+
+  const date =
+    document.getElementById("prefDate").value;
+
+  const time =
+    document.getElementById("prefTime").value;
+
+  const details =
+    document.getElementById("projectDetails").value;
+
+  const selectedBudget =
+    document.querySelector(".budget-tab.selected");
+
+  const budget =
+    selectedBudget
+      ? selectedBudget.innerText
+      : "Not Selected";
+
+  if (!fullName || !email || !service) {
+
+    highlightEmpty();
+
+    shakeForm();
+
+    return;
+  }
+
+  const message =
+`🚀 *NEW CONSULTATION BOOKING*
+
+👤 *Full Name:* ${fullName}
+
+📧 *Email:* ${email}
+
+📱 *WhatsApp:* ${whatsapp}
+
+💼 *Service:* ${service}
+
+💰 *Budget:* ${budget}
+
+📅 *Preferred Date:* ${date}
+
+⏰ *Preferred Time:* ${time}
+
+📝 *Project Details:*
+${details}`;
+
+  const whatsappURL =
+`https://wa.me/923296625497?text=${encodeURIComponent(message)}`;
+
+  window.open(whatsappURL, "_blank");
+
+  showModal();
+
+});
 </script>
 </body>
 </html>

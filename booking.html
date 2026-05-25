@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Strategy Session — Muhammad Aashir Abbas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --bg-deep: #020812;
+    --bg-navy: #050f1e;
+    --bg-card: rgba(8, 20, 45, 0.7);
+    --bg-card2: rgba(5, 15, 35, 0.85);
+    --gold: #f4a012;
+    --gold-light: #ffbe4d;
+    --gold-dim: rgba(244, 160, 18, 0.15);
+    --teal: #00d4c8;
+    --teal-dim: rgba(0, 212, 200, 0.12);
+    --white: #ffffff;
+    --white-70: rgba(255,255,255,0.7);
+    --white-30: rgba(255,255,255,0.3);
+    --white-10: rgba(255,255,255,0.07);
+    --border: rgba(244, 160, 18, 0.2);
+    --border-teal: rgba(0, 212, 200, 0.2);
+    --glow-gold: 0 0 30px rgba(244,160,18,0.4), 0 0 60px rgba(244,160,18,0.15);
+    --glow-teal: 0 0 25px rgba(0,212,200,0.35), 0 0 50px rgba(0,212,200,0.12);
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-deep); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  #cursor {
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transition: transform 0.1s;
+    mix-blend-mode: screen;
+  }
+  #cursor-glow {
+    width: 40px; height: 40px;
+    border: 1px solid rgba(244,160,18,0.4);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transition: all 0.15s ease;
+    background: rgba(244,160,18,0.04);
+  }
+
+  /* PARTICLES */
+  #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    animation: floatUp linear infinite;
+    opacity: 0;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+  }
+
+  /* GRID LINES BG */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(244,160,18,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244,160,18,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+  }
+
+  /* NAVBAR */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5%;
+  height: 70px;
+
+  background: rgba(2, 8, 18, 0.9);
+
+  /* Safari Support */
+  -webkit-backdrop-filter: blur(20px);
+
+  /* Normal Support */
+  backdrop-filter: blur(20px);
+
+  border-bottom: 1px solid rgba(244,160,18,0.12);
+}
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    color: var(--white-70);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-family: var(--font-mono);
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 20px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--bg-deep);
+    box-shadow: var(--glow-gold);
+  }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .nav-hamburger span { width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
+
+  /* MAIN */
+  main { position: relative; z-index: 1; padding-top: 70px; }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 90px 5% 60px;
+    position: relative;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold-dim);
+    border: 1px solid var(--border);
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: var(--font-mono);
+    margin-bottom: 32px;
+    animation: fadeDown 0.8s ease both;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 6vw, 5.2rem);
+    font-weight: 900;
+    line-height: 1.08;
+    margin-bottom: 22px;
+    animation: fadeDown 0.8s 0.1s ease both;
+  }
+  .hero h1 .white-word { color: var(--white); }
+  .hero h1 .gold-word {
+    color: var(--gold);
+    text-shadow: var(--glow-gold);
+  }
+  .hero p {
+    max-width: 600px; margin: 0 auto 40px;
+    color: var(--white-70);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    animation: fadeDown 0.8s 0.2s ease both;
+  }
+  .hero-divider {
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto;
+    animation: fadeDown 0.8s 0.3s ease both;
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* BOOKING LAYOUT */
+  .booking-layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 28px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 50px 5% 80px;
+    animation: fadeUp 0.9s 0.3s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* GLASS CARD */
+.glass-card {
+  background: var(--bg-card);
+
+  /* Safari Support */
+  -webkit-backdrop-filter: blur(30px);
+
+  /* Normal Support */
+  backdrop-filter: blur(30px);
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 44px;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+  .glass-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .glass-card::after {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(244,160,18,0.08), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  /* FORM HEADER */
+  .form-header { margin-bottom: 36px; }
+  .form-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .form-header h2 span { color: var(--gold); }
+  .form-header p { color: var(--white-70); font-size: 0.9rem; }
+
+  /* FORM GRID */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+  label i { margin-right: 6px; font-size: 0.7rem; }
+
+  input, select, textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(244,160,18,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    outline: none;
+    transition: all 0.3s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    background: rgba(244,160,18,0.06);
+    box-shadow: 0 0 0 3px rgba(244,160,18,0.1), var(--glow-gold);
+  }
+  select { cursor: pointer; }
+  select option { background: #050f1e; color: var(--white); }
+  textarea { resize: vertical; min-height: 120px; }
+
+  /* BUDGET TABS */
+  .budget-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .budget-tab {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(244,160,18,0.2);
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: var(--white-70);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--font-mono);
+    letter-spacing: 1px;
+  }
+  .budget-tab:hover { border-color: var(--gold); color: var(--gold); }
+  .budget-tab.selected {
+    background: var(--gold-dim);
+    border-color: var(--gold);
+    color: var(--gold);
+    box-shadow: 0 0 12px rgba(244,160,18,0.2);
+  }
+
+  /* SUBMIT BUTTON */
+  .submit-btn {
+    width: 100%;
+    margin-top: 28px;
+    padding: 18px 32px;
+    background: linear-gradient(135deg, var(--gold) 0%, #e8920a 100%);
+    border: none;
+    border-radius: 12px;
+    color: #050f1e;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: var(--glow-gold);
+  }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(244,160,18,0.6), 0 0 80px rgba(244,160,18,0.2);
+  }
+  .submit-btn:active { transform: translateY(0); }
+  .submit-btn .btn-text { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .submit-btn::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .submit-btn:hover::after { opacity: 1; }
+
+  /* RIPPLE */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: scale(0);
+    animation: rippleAnim 0.6s linear;
+    pointer-events: none;
+  }
+  @keyframes rippleAnim {
+    to { transform: scale(4); opacity: 0; }
+  }
+
+  /* SIDE PANEL */
+  .side-panel { display: flex; flex-direction: column; gap: 20px; }
+
+  /* INFO CARD */
+.info-card {
+  background: var(--bg-card2);
+
+  /* Safari Support */
+  -webkit-backdrop-filter: blur(30px);
+
+  /* Normal Support */
+  backdrop-filter: blur(30px);
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+  .info-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  }
+  .info-card::after {
+    content: '';
+    position: absolute; bottom: -60px; left: -60px;
+    width: 150px; height: 150px;
+    background: radial-gradient(circle, rgba(0,212,200,0.07), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .availability-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,212,200,0.1);
+    border: 1px solid rgba(0,212,200,0.3);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    color: var(--teal);
+    font-family: var(--font-mono);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .availability-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 0 8px var(--teal);
+  }
+
+  .profile-row {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 24px;
+  }
+  .profile-avatar {
+    width: 58px; height: 58px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--gold), #e8920a);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--bg-deep);
+    font-weight: 900;
+    flex-shrink: 0;
+    box-shadow: var(--glow-gold);
+  }
+  .profile-name { font-family: var(--font-display); font-size: 1.1rem; color: var(--white); }
+  .profile-title { font-size: 0.72rem; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-mono); margin-top: 2px; }
+
+  .info-items { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+  .info-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 16px;
+    background: var(--white-10);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    transition: all 0.3s;
+  }
+  .info-item:hover {
+    border-color: rgba(244,160,18,0.25);
+    background: rgba(244,160,18,0.05);
+  }
+  .info-icon {
+    width: 34px; height: 34px;
+    background: var(--gold-dim);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+  .info-text .label { font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white-30); font-family: var(--font-mono); }
+  .info-text .value { font-size: 0.88rem; color: var(--white); margin-top: 2px; font-weight: 500; }
+  .info-text .value a { color: var(--gold); text-decoration: none; }
+  .info-text .value a:hover { text-shadow: var(--glow-gold); }
+
+  /* STATS */
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 16px;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(244,160,18,0.15);
+    transform: translateY(-2px);
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(244,160,18,0.04), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .stat-card:hover::before { opacity: 1; }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    text-shadow: var(--glow-gold);
+  }
+  .stat-label { font-size: 0.68rem; color: var(--white-70); letter-spacing: 1px; margin-top: 6px; font-family: var(--font-mono); text-transform: uppercase; }
+
+  /* CONTACT BUTTONS */
+  .contact-btns { display: flex; gap: 10px; margin-top: 20px; }
+  .contact-btn {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+    font-weight: 600;
+  }
+  .btn-email {
+    background: var(--gold-dim);
+    border: 1px solid var(--border);
+    color: var(--gold);
+  }
+  .btn-email:hover {
+    background: var(--gold);
+    color: var(--bg-deep);
+    box-shadow: var(--glow-gold);
+  }
+  .btn-whatsapp {
+    background: rgba(37,211,102,0.1);
+    border: 1px solid rgba(37,211,102,0.25);
+    color: #25d366;
+  }
+  .btn-whatsapp:hover {
+    background: #25d366;
+    color: var(--bg-deep);
+    box-shadow: 0 0 20px rgba(37,211,102,0.35);
+  }
+
+  /* LOADING SPINNER */
+  .spinner {
+    width: 20px; height: 20px;
+    border: 2px solid rgba(5,15,30,0.3);
+    border-top-color: var(--bg-deep);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: none;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* SUCCESS MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  background: rgba(2,8,18,0.92);
+
+  /* Safari Support */
+  -webkit-backdrop-filter: blur(20px);
+
+  /* Normal Support */
+  backdrop-filter: blur(20px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.4s;
+}
+  .modal-overlay.show { opacity: 1; pointer-events: all; }
+  .modal {
+    background: var(--bg-card2);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 56px 48px;
+    text-align: center;
+    max-width: 480px;
+    width: 90%;
+    position: relative;
+    transform: scale(0.8) translateY(30px);
+    transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), var(--glow-gold);
+  }
+  .modal-overlay.show .modal { transform: scale(1) translateY(0); }
+  .modal::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--teal), transparent);
+  }
+  .modal-icon {
+    width: 80px; height: 80px;
+    margin: 0 auto 28px;
+    background: linear-gradient(135deg, var(--gold), #e8920a);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    box-shadow: var(--glow-gold);
+    animation: bounceIn 0.6s 0.2s both;
+  }
+  @keyframes bounceIn {
+    from { transform: scale(0); }
+    70% { transform: scale(1.15); }
+    to { transform: scale(1); }
+  }
+  .modal h3 {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .modal h3 span { color: var(--gold); }
+  .modal p { color: var(--white-70); line-height: 1.7; margin-bottom: 8px; }
+  .modal-divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 24px auto; }
+  .modal-detail {
+    background: var(--white-10);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 12px;
+    text-align: left;
+  }
+  .modal-detail i { color: var(--gold); font-size: 0.85rem; width: 16px; }
+  .modal-detail span { font-size: 0.85rem; color: var(--white-70); }
+  .modal-close {
+    margin-top: 28px;
+    padding: 14px 40px;
+    background: linear-gradient(135deg, var(--gold), #e8920a);
+    border: none;
+    border-radius: 10px;
+    color: var(--bg-deep);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--glow-gold);
+  }
+  .modal-close:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(244,160,18,0.6); }
+
+  /* FOOTER NOTE */
+  .footer-note {
+    text-align: center;
+    padding: 30px 5%;
+    border-top: 1px solid rgba(244,160,18,0.08);
+    color: var(--white-30);
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    letter-spacing: 1px;
+    position: relative; z-index: 1;
+  }
+  .footer-note span { color: var(--gold); }
+
+  /* GLOW LINES */
+  .glow-line {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .booking-layout { grid-template-columns: 1fr; }
+    .side-panel { display: grid; grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+    .hero { padding: 70px 5% 40px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .glass-card { padding: 28px 22px; }
+    .side-panel { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(4, 1fr); }
+    body { cursor: auto; }
+    #cursor, #cursor-glow { display: none; }
+    .booking-layout { padding: 30px 5% 60px; }
+    .contact-btns { flex-direction: column; }
+  }
+  @media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 2.2rem; }
+    .budget-tabs { gap: 6px; }
+    .budget-tab { padding: 8px 12px; font-size: 0.72rem; }
+  }
+
+  /* ANIMATED BORDER ON CARD */
+  @keyframes borderGlow {
+    0%, 100% { box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(244,160,18,0.15); }
+    50% { box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(244,160,18,0.4), 0 0 40px rgba(244,160,18,0.08); }
+  }
+  .glass-card { animation: borderGlow 4s ease-in-out infinite; }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-glow"></div>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- BACKGROUND GLOWS -->
+<div class="glow-line" style="width:500px;height:500px;background:radial-gradient(circle,rgba(244,160,18,0.18),transparent 70%);top:-100px;left:-100px;"></div>
+<div class="glow-line" style="width:600px;height:600px;background:radial-gradient(circle,rgba(0,212,200,0.12),transparent 70%);bottom:-150px;right:-150px;"></div>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="nav-logo">MAA</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="gallery.html">My Gallery</a></li>
+      <li><a href="Game.html">Game</a></li>
+    </ul>
+  </nav>
+  <a href="#booking" class="nav-cta">Book Now</a>
+  <div class="nav-hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU (hidden by default) -->
+<div id="mobileMenu" style="display:none;position:fixed;top:70px;left:0;right:0;z-index:99;background:rgba(2,8,18,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(244,160,18,0.15);padding:20px;animation:fadeDown 0.3s ease">
+  <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+    <li><a href="#" style="color:rgba(255,255,255,0.7);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;">Home</a></li>
+    <li><a href="#" style="color:rgba(255,255,255,0.7);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;">Skills</a></li>
+    <li><a href="#" style="color:rgba(255,255,255,0.7);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;">Services</a></li>
+    <li><a href="#" style="color:#f4a012;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;">Contact</a></li>
+  </ul>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="booking">
+    <div class="hero-tag"><span>Free Consultation Available</span></div>
+    <h1>
+      <span class="white-word">Book a </span><br>
+      <span class="gold-word">Strategy Session</span>
+    </h1>
+    <p>Let's discuss your Shopify, Amazon, Branding, UI/UX, Marketing, or Digital Growth goals. Schedule a premium consultation today.</p>
+    <div class="hero-divider"></div>
+  </section>
+
+  <!-- BOOKING LAYOUT -->
+  <section class="booking-layout">
+
+    <!-- LEFT: FORM -->
+    <div class="glass-card">
+      <div class="form-header">
+        <h2>Schedule Your <span>Consultation</span></h2>
+        <p>Fill in the details below and I'll get back to you within an hour.</p>
+      </div>
+
+      <form class="form-grid" id="bookingForm"
+action="https://formsubmit.co/ajax/aashirrajpoot757@gmail.com"
+method="POST">
+<input type="hidden" name="_subject" value="🚀 New Consultation Booking">
+
+<input type="hidden" name="_captcha" value="false">
+
+<input type="hidden" name="_template" value="table">
+
+<input type="hidden" name="_autoresponse"
+value="Thank you for booking a consultation with Muhammad Aashir Abbas. Your request has been received successfully. I will contact you shortly.">
+
+        <div class="form-group">
+          <label><i class="fas fa-user"></i>Full Name</label>
+          <input type="text" id="fullName" placeholder="Your full name" autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-envelope"></i>Email Address</label>
+          <input type="email" id="emailAddr" name="Email Address" placeholder="your@email.com" autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label><i class="fab fa-whatsapp"></i>WhatsApp Number</label>
+          <input type="tel" id="whatsappNum" name="WhatsApp Number" name="WhatsApp Number" placeholder="+92 300 0000000">
+        </div>
+
+        <div class="form-group">
+
+  <label for="serviceSelect">
+    <i class="fas fa-briefcase"></i>
+    Service Required
+  </label>
+
+  <select
+    id="serviceSelect"
+    name="Service Required"
+    title="Select Service Required"
+  >
+    <option value="" disabled selected>Select a service</option>
+
+    <option>Shopify Development</option>
+    <option>Amazon VA</option>
+    <option>Digital Marketing</option>
+    <option>UI/UX Design</option>
+    <option>Graphic Design</option>
+    <option>Frontend Development</option>
+    <option>Business Strategy</option>
+
+  </select>
+
+</div>
+
+<div class="form-group">
+
+  <label for="prefDate">
+    <i class="fas fa-calendar"></i>
+    Preferred Date
+  </label>
+
+  <input
+    type="date"
+    id="prefDate"
+    name="Preferred Date"
+    title="Choose Preferred Date"
+  >
+
+</div>
+
+<div class="form-group">
+
+  <label for="prefTime">
+    <i class="fas fa-clock"></i>
+    Preferred Time
+  </label>
+
+  <input
+    type="time"
+    id="prefTime"
+    name="Preferred Time"
+    title="Choose Preferred Time"
+  >
+
+</div>
+
+<div class="form-group full">
+
+  <label>
+    <i class="fas fa-wallet"></i>
+    Project Budget
+  </label>
+
+  <div
+    class="budget-tabs"
+    id="budgetTabs"
+    title="Select Project Budget"
+  >
+
+    <div class="budget-tab" onclick="selectBudget(this)">Under $500</div>
+
+    <div class="budget-tab" onclick="selectBudget(this)">
+      $500 – $1K
+    </div>
+
+    <div class="budget-tab" onclick="selectBudget(this)">
+      $1K – $3K
+    </div>
+
+    <div class="budget-tab" onclick="selectBudget(this)">
+      $3K – $5K
+    </div>
+
+    <div class="budget-tab" onclick="selectBudget(this)">
+      $5K+
+    </div>
+
+    <div class="budget-tab" onclick="selectBudget(this)">
+      Let's Discuss
+    </div>
+
+  </div>
+
+</div>
+
+        <div class="form-group full">
+          <label><i class="fas fa-align-left"></i>Project Details</label>
+          <textarea id="projectDetails" name="Project Details" placeholder="Tell me about your project, goals, timeline, and any specific requirements..."></textarea>
+        </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">
+        <span class="btn-text">
+          <span id="btnLabel">Book My Consultation</span>
+          <i class="fas fa-arrow-right" id="btnIcon"></i>
+          <div class="spinner" id="btnSpinner"></div>
+        </span>
+        </form>
+      </button>
+
+      <p style="text-align:center;margin-top:16px;font-size:0.75rem;color:rgba(255,255,255,0.3);font-family:'JetBrains Mono',monospace;">
+        <i class="fas fa-lock" style="color:var(--gold);margin-right:6px;"></i>Your information is 100% private and secure.
+      </p>
+    </div>
+
+    <!-- RIGHT: INFO PANEL -->
+    <div class="side-panel">
+
+      <!-- Profile Card -->
+      <div class="info-card">
+        <div class="availability-badge">Available for Freelance</div>
+        <div class="profile-row">
+          <div class="profile-avatar">MA</div>
+          <div>
+            <div class="profile-name">Muhammad Aashir Abbas</div>
+            <div class="profile-title">IT Specialist &amp; Digital Entrepreneur</div>
+          </div>
+        </div>
+
+        <div class="info-items">
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-bolt"></i></div>
+            <div class="info-text">
+              <div class="label">Response Time</div>
+              <div class="value">Under 1 Hour</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-video"></i></div>
+            <div class="info-text">
+              <div class="label">Meeting Duration</div>
+              <div class="value">30 – 60 Minutes</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div class="info-text">
+              <div class="label">Email</div>
+              <div class="value"><a href="mailto:aashirrajpoot757@gmail.com">aashirrajpoot757@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="info-item">
+  <div class="info-icon">
+    <i class="fab fa-whatsapp"></i>
+  </div>
+
+  <div class="info-text">
+    <div class="label">WhatsApp</div>
+
+    <div class="value">
+      <a
+        href="https://wa.me/923296625497"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        +92 329 6625497
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="contact-btns">
+
+  <a
+    href="mailto:aashirrajpoot757@gmail.com"
+    class="contact-btn btn-email"
+  >
+    <i class="fas fa-envelope"></i>
+    Email
+  </a>
+
+  <a
+    href="https://wa.me/923296625497"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="contact-btn btn-whatsapp"
+  >
+    <i class="fab fa-whatsapp"></i>
+    WhatsApp
+  </a>
+
+</div>
+
+      <!-- Stats Card -->
+      <div class="info-card">
+        <div style="margin-bottom:20px;">
+          <div style="font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-family:'JetBrains Mono',monospace;margin-bottom:6px;">
+            <i class="fas fa-chart-line" style="margin-right:6px;"></i>Track Record
+          </div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--white);">Proven Results</div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number" data-target="80">0</div>
+            <div class="stat-label">Projects Done</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="60">0</div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="3">0</div>
+            <div class="stat-label">Yrs Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="5" data-suffix=".0★">0</div>
+            <div class="stat-label">Rating</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer-note">
+    © 2025 <span>Muhammad Aashir Abbas</span> — All rights reserved &nbsp;·&nbsp; Designed with <span>♥</span> &amp; Precision
+  </footer>
+</main>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <h3>Session <span>Booked!</span></h3>
+    <p>Your consultation request has been successfully submitted. I'll confirm your session within the next hour.</p>
+    <div class="modal-divider"></div>
+    <div class="modal-detail">
+      <i class="fas fa-envelope"></i>
+      <span>Confirmation sent to your email address</span>
+    </div>
+    <div class="modal-detail">
+      <i class="fab fa-whatsapp"></i>
+      <span>WhatsApp follow-up within 60 minutes</span>
+    </div>
+    <div class="modal-detail">
+      <i class="fas fa-calendar-check"></i>
+      <span>Session details will be shared before the meeting</span>
+    </div>
+    <button class="modal-close" onclick="closeModal()">
+      <i class="fas fa-check" style="margin-right:8px;"></i>Awesome, Got It!
+    </button>
+  </div>
+</div>
+
+<script>
+  /* ── CURSOR ── */
+  const cursor = document.getElementById('cursor');
+  const cursorGlow = document.getElementById('cursor-glow');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX - 5 + 'px';
+    cursor.style.top = e.clientY - 5 + 'px';
+    cursorGlow.style.left = e.clientX - 20 + 'px';
+    cursorGlow.style.top = e.clientY - 20 + 'px';
+  });
+  document.querySelectorAll('a,button,input,select,textarea,.budget-tab,.stat-card,.info-item').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'scale(2.5)';
+      cursorGlow.style.transform = 'scale(1.5)';
+      cursorGlow.style.borderColor = 'rgba(244,160,18,0.7)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'scale(1)';
+      cursorGlow.style.transform = 'scale(1)';
+      cursorGlow.style.borderColor = 'rgba(244,160,18,0.4)';
+    });
+  });
+
+  /* ── PARTICLES ── */
+  const container = document.getElementById('particles');
+  const colors = ['#f4a012','#00d4c8','#ffbe4d','rgba(244,160,18,0.5)','rgba(0,212,200,0.5)'];
+  for (let i = 0; i < 55; i++) {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    const size = Math.random() * 3 + 1;
+    p.style.cssText = `
+      width:${size}px;height:${size}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      left:${Math.random()*100}%;
+      animation-duration:${Math.random()*15+10}s;
+      animation-delay:${Math.random()*10}s;
+    `;
+    container.appendChild(p);
+  }
+
+  /* ── MOBILE MENU ── */
+  function toggleMenu() {
+    const m = document.getElementById('mobileMenu');
+    m.style.display = m.style.display === 'none' ? 'block' : 'none';
+  }
+
+  /* ── BUDGET SELECT ── */
+  function selectBudget(el) {
+    document.querySelectorAll('.budget-tab').forEach(t => t.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  /* ── COUNTER ANIMATION ── */
+  function animateCounters() {
+    document.querySelectorAll('[data-target]').forEach(el => {
+      const target = +el.getAttribute('data-target');
+      const suffix = el.getAttribute('data-suffix') || '+';
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const update = () => {
+        current = Math.min(current + step, target);
+        el.textContent = Math.floor(current) + (current >= target ? suffix : '');
+        if (current < target) requestAnimationFrame(update);
+      };
+      update();
+    });
+  }
+
+  /* ── INTERSECTION OBSERVER ── */
+  const statsObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounters(); statsObserver.disconnect(); } });
+  }, { threshold: 0.4 });
+  const statsGrid = document.querySelector('.stats-grid');
+  if (statsGrid) statsObserver.observe(statsGrid);
+
+  /* ── RIPPLE ── */
+  document.getElementById('submitBtn').addEventListener('click', function(e) {
+    const btn = this;
+    const ripple = document.createElement('span');
+    ripple.classList.add('ripple');
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;`;
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+
+  /* ── FORM SUBMIT ── */
+
+  function highlightEmpty() {
+    const fields = ['fullName','emailAddr','serviceSelect'];
+    fields.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.style.borderColor = '#ff4d4d';
+        el.style.boxShadow = '0 0 0 3px rgba(255,77,77,0.15)';
+        setTimeout(() => {
+          el.style.borderColor = '';
+          el.style.boxShadow = '';
+        }, 2000);
+      }
+    });
+  }
+
+  function shakeForm() {
+    const card = document.querySelector('.glass-card');
+    card.style.animation = 'none';
+    card.style.transform = 'translateX(-8px)';
+    setTimeout(() => card.style.transform = 'translateX(8px)', 80);
+    setTimeout(() => card.style.transform = 'translateX(-5px)', 160);
+    setTimeout(() => card.style.transform = 'translateX(5px)', 240);
+    setTimeout(() => { card.style.transform = ''; card.style.animation = ''; }, 320);
+  }
+
+  /* ── MODAL ── */
+  function showModal() {
+    document.getElementById('successModal').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('successModal').classList.remove('show');
+    document.body.style.overflow = '';
+    // Reset form
+    document.getElementById('fullName').value = '';
+    document.getElementById('emailAddr').value = '';
+    document.getElementById('whatsappNum').value = '';
+    document.getElementById('serviceSelect').value = '';
+    document.getElementById('prefDate').value = '';
+    document.getElementById('prefTime').value = '';
+    document.getElementById('projectDetails').value = '';
+    document.querySelectorAll('.budget-tab').forEach(t => t.classList.remove('selected'));
+  }
+  document.getElementById('successModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  /* ── INPUT NEON GLOW ── */
+  document.querySelectorAll('input,select,textarea').forEach(el => {
+    el.addEventListener('focus', () => {
+      el.parentElement.querySelector('label') &&
+      (el.parentElement.querySelector('label').style.color = 'var(--teal)');
+    });
+    el.addEventListener('blur', () => {
+      el.parentElement.querySelector('label') &&
+      (el.parentElement.querySelector('label').style.color = 'var(--gold)');
+    });
+  });
+
+  /* ── SET MIN DATE ── */
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('prefDate').setAttribute('min', today);
+</script>
+</body>
+</html>

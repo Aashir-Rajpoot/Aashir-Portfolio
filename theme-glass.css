@@ -1,0 +1,122 @@
+/* ============================================================
+   LIQUID GLASS + SKEUOMORPHIC + BENTO + ORGANIC NEUMORPHIC
+   Additive theme layer — no colors/fonts/content/logic changed.
+   Link this AFTER the page's own <style>/stylesheet.
+   ============================================================ */
+
+:root{
+  --glass-hl: rgba(255,255,255,.10);
+  --glass-hl-soft: rgba(255,255,255,.05);
+  --glass-edge: rgba(255,255,255,.10);
+  --glass-shadow-1: rgba(0,0,0,.35);
+  --glass-shadow-2: rgba(0,0,0,.18);
+  --glass-radius: 20px;
+  --glass-radius-sm: 14px;
+  --glass-ease: cubic-bezier(.22,1,.36,1);
+}
+
+/* NAV / HEADER — floating liquid-glass bar */
+nav, header:not(.gallery-header){
+  background: rgba(8,17,32,.42) !important;
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border-bottom: 1px solid var(--glass-edge);
+  box-shadow: 0 8px 30px var(--glass-shadow-2);
+}
+
+/* CARDS / BOXES / TILES — bento composition + glass + neumorphic depth */
+[class*="card"], [class*="Card"], [class*="-box"], [class*="Box"], [class*="tile"]{
+  position: relative;
+  background: rgba(255,255,255,.045) !important;
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--glass-radius);
+  box-shadow:
+    0 1px 0 var(--glass-hl) inset,
+    0 -1px 12px rgba(0,0,0,.15) inset,
+    0 18px 40px var(--glass-shadow-2),
+    0 2px 6px var(--glass-shadow-2);
+  transition: transform .45s var(--glass-ease), box-shadow .45s var(--glass-ease), border-color .45s var(--glass-ease), background .45s var(--glass-ease);
+  overflow: hidden;
+}
+[class*="card"]::before, [class*="Card"]::before, [class*="-box"]::before, [class*="Box"]::before, [class*="tile"]::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,0) 40%);
+  pointer-events: none;
+}
+[class*="card"]:hover, [class*="Card"]:hover, [class*="-box"]:hover, [class*="Box"]:hover, [class*="tile"]:hover{
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,.18);
+  box-shadow:
+    0 1px 0 var(--glass-hl) inset,
+    0 -1px 14px rgba(0,0,0,.18) inset,
+    0 28px 60px var(--glass-shadow-1),
+    0 4px 10px var(--glass-shadow-2);
+}
+
+/* BUTTONS — solid glossy skeuomorphic pill (own colors kept, no glass blur) */
+button, .btn, [class*="-btn"], [class*="Btn"], a.button, input[type="submit"], input[type="button"]{
+  position: relative;
+  isolation: isolate;
+  border-radius: 999px !important;
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.55),
+    inset 0 -3px 6px rgba(0,0,0,.18),
+    0 1px 0 rgba(255,255,255,.25),
+    0 10px 20px rgba(0,0,0,.28),
+    0 3px 6px rgba(0,0,0,.22);
+  transition: transform .2s var(--glass-ease), box-shadow .2s var(--glass-ease), filter .2s var(--glass-ease);
+  overflow: hidden;
+}
+button::before, .btn::before, [class*="-btn"]::before, [class*="Btn"]::before, a.button::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,.45) 0%, rgba(255,255,255,.08) 42%, rgba(255,255,255,0) 55%);
+  pointer-events: none;
+  z-index: 1;
+}
+button:hover, .btn:hover, [class*="-btn"]:hover, [class*="Btn"]:hover, a.button:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.6),
+    inset 0 -3px 6px rgba(0,0,0,.18),
+    0 1px 0 rgba(255,255,255,.25),
+    0 16px 30px rgba(0,0,0,.32),
+    0 4px 8px rgba(0,0,0,.24);
+}
+button:active, .btn:active, [class*="-btn"]:active, a.button:active{
+  transform: translateY(0);
+  filter: brightness(.97);
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,.3),
+    inset 0 1px 1px rgba(255,255,255,.3),
+    0 4px 10px rgba(0,0,0,.2);
+}
+
+/* INPUTS / FORMS — glass surface, organic soft corners */
+input, textarea, select{
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--glass-radius-sm) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18) inset, 0 1px 0 var(--glass-hl-soft) inset;
+  transition: box-shadow .3s var(--glass-ease), border-color .3s var(--glass-ease);
+}
+input:focus, textarea:focus, select:focus{
+  box-shadow: 0 0 0 3px var(--glass-hl-soft), 0 2px 10px rgba(0,0,0,.2) inset;
+}
+
+/* GALLERY / IMAGE FRAMES — glass container only, image itself untouched */
+[class*="gallery"], [class*="Gallery"]{
+  border-radius: var(--glass-radius);
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; }
+}
